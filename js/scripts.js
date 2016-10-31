@@ -1,3 +1,4 @@
+// THEME JS -- NOT SURE IF I NEED THIS LOL
 (function($) {
     "use strict"; // Start of use strict
 
@@ -29,3 +30,19 @@
     })
 
 })(jQuery); // End of use strict
+
+
+// FOR TABBED VIEWS
+$(document).ready(function(){
+    
+    $('ul.tabs li').click(function(){
+        var tab_id = $(this).attr('data-tab');
+
+        $('ul.tabs li').removeClass('current');
+        $('.tab-content').removeClass('current');
+
+        $(this).addClass('current');
+        $("#"+tab_id).addClass('current');
+    })
+
+})

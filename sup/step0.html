@@ -76,23 +76,48 @@
         <!-- /.container-fluid -->
     </nav>
 
-
+    
     <div class="container">
-        <h2>Step x: xxxxxx</h2>
+        <h2>Step 0: Emulator</h2>
 
+        <div class="tab-container">
+            <ul class="tabs">
+                <li class="tab current" data-tab="tab-1">OS X</li>
+                <li class="tab" data-tab="tab-2">Windows</li>
+                <li class="tab" data-tab="tab-3">Linux</li>
+            </ul>
+        </div>
+
+        <div id="tab-1" class="tab-content current">
+            <ol>
+                <li>Navigate to <b>Tools > Android > AVD Manager > Create Virtual Device</b>.</li>
+                <li><b>Choose a device</b>. For this activity, we'll be using a Nexus 5 device.</li>
+                <li><b>Chose a system image.</b> For this activity, we'll be using Marshmallow. For more information about Android versions, <a href="https://www.android.com/history/#/marshmallow">check out the documentation here.</a></li>
+                <li><b>Click finish</b>.</li>
+                <li><b>Press play</b> on the device you just created. Give it a few seconds to start up.</li>
+            </ol>
+        </div>
+
+        <div id="tab-2" class="tab-content">
+            <ol>
+                <li>These are the <b>Windows Instructions</b></li>
+            </ol>
+        </div>
+
+        <div id="tab-3" class="tab-content">
+            <ol>
+                <li>These are the <b>Linux Instructions</b></li>
+            </ol>
+        </div>
     </div>
 
     <div class="container">
         <div class="buttons">
-            <div class="previous">
-                <a href="../sup/step0.html" class="btn btn-secondary">&larr; Previous</a>
-            </div>
             <div class="next">
-                <a href="../sup/step2.html" class="btn btn-secondary">Next &rarr;</a>
+                <a href="../sup/step1.html" class="btn btn-secondary">Next &rarr;</a>
             </div>
         </div>
     </div>
-
 
     <!-- jQuery -->
     <script src="../js/jquery.js"></script>
