@@ -3,7 +3,7 @@
 
 <head>
 
-    <title>Android 101</title>
+    <title><span class="purple">Android</span> 101</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -34,7 +34,7 @@
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="../index.html">Android 101</a>
+                <a class="navbar-brand page-scroll" href="../index.html"><span class="purple">Android</span> 101</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -53,7 +53,7 @@
                       <a href="../sup/step1.html">Step 1: Hello World</a>
                     </li>
                     <li>
-                      <a href="../sup/step2.html">Step 2: ???</a>
+                      <a href="../sup/step2.html">Step 2: Widgets and Resources</a>
                     </li>
                     <li>
                       <a href="../sup/step3.html">Step 3: ???</a>
@@ -78,6 +78,70 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
+
+
+    <div class="container">
+        <h2>Step 2: Widgets and Resources</h2>
+
+        <div class="sct sct-primary">
+            <h3>Adding widgets</h3>
+
+<pre class="code-block">
+<span class="black">&lt;?</span><span class="blue">xml version=</span>"1.0" <span class="blue">encoding=</span>"utf-8"<span class="black">&lt;</span>
+<span class="black">&lt;LinearLayout</span>
+    <span class="blue">xmlns:</span><span class="purple">android</span>="http://schemas.android.com/apk/res/android"
+    <span class="blue">xmlns:</span><span class="purple">tools</span><span class="blue">=</span>"http://schemas.android.com/tools"
+    <span class="purple">tools</span><span class="blue">:context=</span>".SupActivity"
+    <span class="purple">android</span><span class="blue">:layout_width=</span>"match_parent"
+    <span class="purple">android</span><span class="blue">:layout_height=</span>"match_parent"
+    <span class="purple">android</span><span class="blue">:orientation=</span>"vertical"
+    <span class="purple">android</span><span class="blue">:paddingBottom=</span>"@dimen/activity_vertical_margin"
+    <span class="purple">android</span><span class="blue">:paddinltop=</span>"@dimen/activity_vertical_margin"
+    <span class="purple">android</span><span class="blue">:paddingLeft=</span>"@dimen/activity_horizontal_margin"
+    <span class="purple">android</span><span class="blue">:paddingRight=</span>"@dimen/activity_horizontal_margin"
+    <span class="purple">android</span><span class="blue">:background=</span><span class="red">"@color/green"</span><span class="black">&gt;</span>
+
+    <span class="black">&lt;Button</span>
+        <span class="purple">android</span><span class="blue">:layout_width=</span>"match_parent"
+        <span class="purple">android</span><span class="blue">:layout_height=</span>"wrap_content"
+        <span class="purple">android</span><span class="blue">:id=</span>"@+id/select_friend"
+        <span class="purple">android</span><span class="blue">:text=</span><span class="red">"@string/select_friend"</span>
+        <span class="purple">android</span><span class="blue">:layout_marginTop=</span>"10dp"<span class="black">/&gt;</span>
+
+    <span class="black">&lt;Button</span>
+        <span class="purple">android</span><span class="blue">:layout_width=</span>"match_parent"
+        <span class="purple">android</span><span class="blue">:layout_height=</span>"wrap_content"
+        <span class="purple">android</span><span class="blue">:id=</span>"@+id/send_sup"
+        <span class="purple">android</span><span class="blue">:text=</span><span class="red">"@string/send_sup"</span>
+        <span class="purple">android</span><span class="blue">:layout_marginTop=</span>"10dp"<span class="black">/&gt;</span>
+
+    <span class="black">&lt;Button</span>
+        <span class="purple">android</span><span class="blue">:layout_width=</span>"match_parent"
+        <span class="purple">android</span><span class="blue">:layout_height=</span>"wrap_content"
+        <span class="purple">android</span><span class="blue">:id=</span>"@+id/last_sup_sent"
+        <span class="purple">android</span><span class="blue">:text=</span><span class="red">"@string/emptyLatestSup"</span>
+        <span class="purple">android</span><span class="blue">:layout_marginTop=</span>"10dp"<span class="black">/&gt;</span>
+
+<span class="black">&lt;/LinearLayout&gt;</span>
+</pre>
+        </div>
+
+        <div class="sct sct-secondary">
+            GOODBYE GOODBYE GOODBYE
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div class="buttons">
+            <div class="previous">
+                <a href="../sup/step1.html" class="btn btn-secondary">&larr; Previous</a>
+            </div>
+            <div class="next">
+                <a href="../sup/step3.html" class="btn btn-secondary">Next &rarr;</a>
+            </div>
+        </div>
+    </div>
 
 
     <!-- jQuery -->

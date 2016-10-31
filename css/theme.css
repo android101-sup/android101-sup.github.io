@@ -33,7 +33,7 @@ h1 {
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
 p {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.5;
   margin-bottom: 20px;
 }
@@ -145,6 +145,10 @@ aside {
   .navbar-default.affix .nav > li > a:hover,
   .navbar-default.affix .nav > li > a:focus:hover {
     color: #395ec6;
+  }
+  .navbar-default.affix .nav > li.selected > a,
+  .navbar-default.affix .nav > li.selected > a:focus {
+    color: #ffffff;
   }
 }
 .navbar-nav>li>.dropdown-menu {
