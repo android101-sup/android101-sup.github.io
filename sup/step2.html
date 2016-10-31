@@ -98,7 +98,7 @@
     <span class="purple">android</span><span class="blue">:layout_height=</span>"match_parent"
     <span class="purple">android</span><span class="blue">:orientation=</span>"vertical"
     <span class="purple">android</span><span class="blue">:paddingBottom=</span>"@dimen/activity_vertical_margin"
-    <span class="purple">android</span><span class="blue">:paddinltop=</span>"@dimen/activity_vertical_margin"
+    <span class="purple">android</span><span class="blue">:paddingTop=</span>"@dimen/activity_vertical_margin"
     <span class="purple">android</span><span class="blue">:paddingLeft=</span>"@dimen/activity_horizontal_margin"
     <span class="purple">android</span><span class="blue">:paddingRight=</span>"@dimen/activity_horizontal_margin"
     <span class="purple">android</span><span class="blue">:background=</span><span class="red">"@color/green"</span><span class="black">&gt;</span>
@@ -127,15 +127,52 @@
 <span class="black">&lt;/LinearLayout&gt;</span>
 </pre>
             
-            <p>You'll notice that there are four lines highlighted red. This means that they are errors. There are some resources we're trying to access that don't exist yet.</p>
+            <p>You'll notice that there are four lines highlighted red. This means that they are errors. There are some resources we're trying to access that don't exist yet. We'll get to these in a bit.</p>
         </div>
 
         <div class="sct sct-secondary">
-            <h3>Types of Resources</h3>
+            <h3>Layout Properties</h3>
+
+            <p>In the layout, we can see that each widget has various properties. We'll take a look at them now.</p>
+
+            <p>First we see a few lines:</p>
+<pre class="code-block">
+<span class="black">&lt;?</span><span class="blue">xml version=</span>"1.0" <span class="blue">encoding=</span>"utf-8"<span class="black">&lt;</span>
+<span class="black">&lt;LinearLayout</span>
+    <span class="blue">xmlns:</span><span class="purple">android</span>="http://schemas.android.com/apk/res/android"
+    <span class="blue">xmlns:</span><span class="purple">tools</span><span class="blue">=</span>"http://schemas.android.com/tools"
+    <span class="purple">tools</span><span class="blue">:context=</span>".SupActivity"
+</pre>
+            <p>These are necessary to define the XML namespace. The first line is to define our XML configuration. The two lines beginning with <span class="code">xmlns</span> specify namespaces. For example, <span class="code">xmlns:android</span> allows the namespace <span class="code">android</span> to stand in for the URL that it is defined by. Each time you see <span class="code">android</span> in your layout, it is essentially standing in for the entire URL in its place.</p>
+
+            <p>The next line beginning with <span class="code">tools:context</span> is to record which activity the layout is associated with.</p>
+
+            <p class="learn-more"><a href="https://developer.android.com/reference/javax/xml/namespace/NamespaceContext.html">More about Namespaces &rarr;</a></p>
+
+            <p>We mentioned earlier that all widgets must have <b><span class="code">android:layout_width</span></b> and <b><span class="code">android:layout_height</span></b>. These are reflected above. <span class="code">android:layout_width</span> and <span class="code">android:layout_height</span> can either be an integer, <span class="code">fill_parent</span>, <span class="code">match_parent</span>, or <span class="code">wrap_content</span>, all of which are fairly self-explanatory.</p>
+
+            <p class="learn-more"><a href="https://developer.android.com/reference/android/view/ViewGroup.LayoutParams.html">More about LayoutParams &rarr;</a></p>
+
+            <p>A <span class="code">LinearLayout</span> component requires <b><span class="code">android:orientation</span></b> to be filled in. This property has two options: <span class="code">vertical</span> and <span class="code">horizontal</span>.</p>
+
+            <p class="learn-more"><a href="https://developer.android.com/reference/android/widget/LinearLayout.html">More about LinearLayouts &rarr;</a></p>
+
+            <p>You'll notice that the three <span class="code">Button</span> widgets have <span class="code">android:id</span> properties. This is for identification when referencing this widget in code.</p>
+
+            <p>Additionally, all of the <span class="code">Button</span> widgets also have <span class="code">android:text</span> properties. This is to specify what the button will be labeled with.</p>
+
+            <p class="learn-more"><a href="https://developer.android.com/reference/android/widget/Button.html">More about Buttons &rarr;</a></p>
+
+            <p>The rest of the components in this <span class="code">LinearLayout</span> are fairly self-explanatory--mostly for positioning within the layout.</p>
 
         </div>
 
         <div class="sct sct-primary">
+            <h3>Types of Resources</h3>
+
+        </div>
+
+        <div class="sct sct-secondary">
             <h3>Color Resource</h3>
 
 <pre class="code-block">
@@ -143,14 +180,16 @@
 </pre>
         </div>
 
-        <div class="sct sct-secondary">
+        <div class="sct sct-primary">
             <h3>String Resource</h3>
-            
+
 <pre class="code-block">
     <span class="black">&lt;string</span> <span class="blue">name=</span>"select_friend"<span class="black">&gt;Choose a friend&lt;/string&gt;</span>
     <span class="black">&lt;string</span> <span class="blue">name=</span>"send_sup"<span class="black">&gt;Send \'Sup\'&lt;/string&gt;</span>
     <span class="black">&lt;string</span> <span class="blue">name=</span>"emptyLatestSup"<span class="black">&gt;todo: Last Sup sent&lt;/string&gt;</span>
+</pre>
 
+<pre class="code-block">
     <span class="black">&lt;string</span> <span class="blue">name=</span>"latestSupFormat"<span class="black">&gt;Last Sup sent to %1$s %2$s&lt;/string&gt;</span>
     <span class="black">&lt;string</span> <span class="blue">name=</span>"dateFormat"<span class="black">&gt;\'on\' M/d/yyy \'at\' h:mma&lt;/string&gt;</span>
     <span class="black">&lt;string</span> <span class="blue">name=</span>"noPhoneNumber"<span class="black">&gt;Please add a phone number!&lt;/string&gt;</span>
@@ -160,8 +199,10 @@
 </pre>
         </div>
 
-        <div class="sct sct-primary">
+        <div class="sct sct-secondary">
             <h3>Run Your App</h3>
+
+            <p>Open up <span class="code">/res/layout/activity_sup.xml</span>. You'll see that what once was red now is green. This means that Android Studio was able to find the correct resources and replace them with the resources we've just added.</p>
 
             <p>Just as before, click the <b>green play button</b> to run your app. You'll see that there's a little green circle at the bottom right of the play button. This just means that change were made since your last run. Now you can see the changes you've made. It should look something like the following:</p>
         </div>
