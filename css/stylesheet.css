@@ -155,6 +155,12 @@ aside {
 .navbar-nav>li>.dropdown-menu {
   background-color: #395ec6;
 }
+.navbar-nav>li.selected {
+  background-color: #395ec6;
+}
+.navbar-nav>li.selected>a {
+  color: #ffffff;
+}
 .dropdown-menu>li>a {
   color: #ffffff;
   font-weight: 300;
