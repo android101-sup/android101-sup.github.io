@@ -160,9 +160,19 @@ aside {
 .navbar-nav>li.selected>a {
   color: #ffffff;
 }
+.dropdown-menu {
+  padding: 8px 0;
+}
 .dropdown-menu>li>a {
   color: #ffffff;
   font-weight: 300;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.dropdown-menu>li>a:focus,
+.dropdown-menu>li>a:hover {
+  background-color: #A4C639;
+  color: #ffffff;
 }
 
 header {

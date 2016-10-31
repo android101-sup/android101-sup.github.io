@@ -3,7 +3,7 @@
 
 <head>
 
-    <title><span class="purple">Android</span> 101</title>
+    <title>Android 101</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -86,6 +86,8 @@
         <div class="sct sct-primary">
             <h3>Adding widgets</h3>
 
+            <p>Open up <span class="code">/res/layout/activity_sup.xml</span>. Replace the entire file with this:</p>
+
 <pre class="code-block">
 <span class="black">&lt;?</span><span class="blue">xml version=</span>"1.0" <span class="blue">encoding=</span>"utf-8"<span class="black">&lt;</span>
 <span class="black">&lt;LinearLayout</span>
@@ -124,10 +126,44 @@
 
 <span class="black">&lt;/LinearLayout&gt;</span>
 </pre>
+            
+            <p>You'll notice that there are four lines highlighted red. This means that they are errors. There are some resources we're trying to access that don't exist yet.</p>
         </div>
 
         <div class="sct sct-secondary">
-            GOODBYE GOODBYE GOODBYE
+            <h3>Types of Resources</h3>
+
+        </div>
+
+        <div class="sct sct-primary">
+            <h3>Color Resource</h3>
+
+<pre class="code-block">
+    <span class="black">&lt;color</span> <span class="blue">name=</span>"green"<span class="black">&gt;#008000&lt;/color&gt;</span>
+</pre>
+        </div>
+
+        <div class="sct sct-secondary">
+            <h3>String Resource</h3>
+            
+<pre class="code-block">
+    <span class="black">&lt;string</span> <span class="blue">name=</span>"select_friend"<span class="black">&gt;Choose a friend&lt;/string&gt;</span>
+    <span class="black">&lt;string</span> <span class="blue">name=</span>"send_sup"<span class="black">&gt;Send \'Sup\'&lt;/string&gt;</span>
+    <span class="black">&lt;string</span> <span class="blue">name=</span>"emptyLatestSup"<span class="black">&gt;todo: Last Sup sent&lt;/string&gt;</span>
+
+    <span class="black">&lt;string</span> <span class="blue">name=</span>"latestSupFormat"<span class="black">&gt;Last Sup sent to %1$s %2$s&lt;/string&gt;</span>
+    <span class="black">&lt;string</span> <span class="blue">name=</span>"dateFormat"<span class="black">&gt;\'on\' M/d/yyy \'at\' h:mma&lt;/string&gt;</span>
+    <span class="black">&lt;string</span> <span class="blue">name=</span>"noPhoneNumber"<span class="black">&gt;Please add a phone number!&lt;/string&gt;</span>
+    <span class="black">&lt;string</span> <span class="blue">name=</span>"message"<span class="black">&gt;Sup&lt;/string&gt;</span>
+    <span class="black">&lt;string</span> <span class="blue">name=</span>"sent"<span class="black">&gt;Sent!&lt;/string&gt;</span>
+    <span class="black">&lt;string</span> <span class="blue">name=</span>"error"<span class="black">&gt;Sending failed. Please try again later!&lt;/string&gt;</span>
+</pre>
+        </div>
+
+        <div class="sct sct-primary">
+            <h3>Run Your App</h3>
+
+            <p>Just as before, click the <b>green play button</b> to run your app. You'll see that there's a little green circle at the bottom right of the play button. This just means that change were made since your last run. Now you can see the changes you've made. It should look something like the following:</p>
         </div>
 
     </div>

@@ -107,7 +107,8 @@ ul.tabs li.current{
 
 .code-block {
 	font-family: "Inconsolata", "Courier New", Courier, monospace;
-	background-color: #ffffff;
+	font-size: 15px;
+	background-color: #fbfbfb;
 	margin: 20px 40px;
 	padding: 20px;
 	overflow: scroll;
