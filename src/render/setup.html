@@ -8,17 +8,6 @@ isPage: true
 <div class="container">
     <h2>Setup</h2>
 
-    <div class="sct sct-primary">
-        <p>I need instructions for:</p>
-        <ul>
-            <li>Installing Android Studio</li>
-            <li>Installing Git (WINDOWS)</li>
-            <li>Setting up Emulator (in tab below) -- if this is the same for all of them, LMK. then i don't need to duplicate :D</li>
-        </ul>
-    </div>
-
-    <div style="height: 30px;"></div>
-
     <div class="tab-container">
         <ul class="tabs">
             <li class="tab current" data-tab="tab-1">OS X</li>
@@ -27,25 +16,99 @@ isPage: true
         </ul>
     </div>
 
-    <div id="tab-1" class="tab-content current">
+
+
+	<!-- INSTALL ANDROID STUDIO -->
+    <div class="sct sct-primary no-bottom">
+    	<h3>Install Android Studio</h3>
+
+    	<p>Follow <a href="https://developer.android.com/studio/install.html">these instructions</a> from the official Android documentation.</p>
+    </div>
+
+
+
+	<!-- GIT -->
+    <div class="sct sct-primary no-bottom">
+    	<h3>Git</h3>
+
+    	<p>Git is a widely used version control system. That means when you developing a new feature or fixing a bug, git is the program in charge of managing your app at those states in development. It also makes life saner when multiple people are working on the same app and trying not to step on each others' toes.</p>
+
+        <p>One of the most popular Git repository hosting services is GitHub. Many developers use it to host their personal projects or personal websites. (This site is hosted on GitHub!) In your future you will most likely find yourself using it over and over again. If you don't already have a GitHub account, head over to <a href="https://github.com/">GitHub</a> to create one. Why not? It's free.</p>
+
+    	<p>For the purposes of this project, we will use git's command line interface (CLI).</p>
+
+        <p class="learn-more"><a href="https://git-scm.com/docs">Git CheatSheet &rarr;</a></p>
+    </div>
+
+    <!-- OSX -->
+    <div class="tab-content tab-1 no-top current">
+        <p>For Mac, you have a few options for installing the git CLI depending on what you have on your computer prior. You only need to pick one of the following.</p>
+        <ul>
+        	<li><span class="recommended">Recommended</span> Install with Homebrew.</li>
+        	<ol>
+        		<li>If you have not already, follow the instructions to <b><a href="http://brew.sh/">install Homebrew</a></b>.</li>
+        		<li><b>Open your terminal</b> and install Git using Homebrew by typing in the following command:<br>
+					<pre class="codeblock" style="margin-top:10px;">brew install git</pre>
+        		</li>
+        	</ol>
+        	<li>Install using the <a href="https://sourceforge.net/projects/git-osx-installer/files/">Mac Installer</a>.</li>
+        	<ol>
+        		<li>Open up the <b>Mac Installer</b> and follow the prompts.</li>
+        		<li>If you would like to login to your git account, you'll need to install the <b><a href="https://www.atlassian.com/git/tutorials/install-git/mac-os-x#install-the-git-credential-osx">git-credential-osxkeychain</a></b> to save your username and password in the OSX keychain.</li>
+        	</ol>
+        </ul>
+    </div>
+
+	<!-- WINDOWS -->
+    <div class="tab-content tab-2 no-top">
+    	<p>For Windows, you have two options for installing git shell to access the CLI. You only need to pick one of the following.</p>
+        <ul>
+            <li>Install the <a href="https://desktop.github.com/">Desktop Client</a> from GitHub. This option provides a GUI to git and github. It also installs the git shell.</li>
+            <ol>
+            	<li>Open up the <b>Desktop Client</b> and follow the prompts.</li>
+            	<li>Click the <b>gear icon</b> in the top right corner.</li>
+            	<li>Select <b>Open in Git Shell</b>.</li>
+            </ol>
+            <li>Install <a href="https://git-for-windows.github.io/">git shell</a> without the desktop client.</li>
+            <ol>
+            	<li>Open up <b>git shell</b> as a regular program.</li>
+            	<li>If the Windows PowerShell opens up, then <b>type <span class="code">$git</span></b> to output the usage documentation.</li>
+            </ol>
+        </ul>
+    </div>
+
+	<!-- LINUX -->
+    <div class="tab-content tab-3 no-top">
         <ol>
-            <li>Navigate to <b>Tools > Android > AVD Manager > Create Virtual Device</b>.</li>
-            <li><b>Choose a device</b>. For this activity, we'll be using a Nexus 5 device.</li>
-            <li><b>Chose a system image.</b> For this activity, we'll be using Marshmallow. For more information about Android versions, <a href="https://www.android.com/history/#/marshmallow">check out the documentation here.</a></li>
+            <li style="color:red;">These are the <b>Linux Instructions</b></li>
+        </ol>
+    </div>
+
+	<!-- GENERAL INSTRUCTIONS AGAIN -->
+    <div class="sct sct-primary no-top no-bottom">
+    	<p>Once you've got git installed, you'll need to configure your Git username and email. These will be associated with any future commits. While we won't be committing anything during this project, it <span style="color:red;">may be/is</span> a necessary step to use git. Use the following commands, inserting your own name and email.</p>
+
+<pre class="codeblock">
+git config --global user.name "YOUR NAME HERE"
+git config --global user.email "YOUR EMAIL HERE"
+</pre>
+    </div>
+
+
+
+	<!-- EMULATOR -->
+    <div class="sct sct-primary">
+    	<h3>Setup Emulator</h3>
+
+        <ol>
+        	<li>Navigate to <b>Tools > Android > AVD Manager</b>.</li>
+        	<li>Select <b>Create Virtual Device</b>.</li>
+        	<li><b>Choose a device</b>. For this activity, we'll be using a <b>Nexus 5</b> device.</li>
+            <li><b>Chose a system image.</b> For this activity, we'll be using <b>Marshmallow</b> with <b>ABI x86</b>.
+            	<br>If your system image is not yet downloaded, you must <b>download</b> first.
+            	<br>For more information about Android versions, <a href="https://www.android.com/history/#/marshmallow">check out the documentation here.</a></li>
             <li><b>Click finish</b>.</li>
             <li><b>Press play</b> on the device you just created. Give it a few seconds to start up.</li>
-        </ol>
-    </div>
-
-    <div id="tab-2" class="tab-content">
-        <ol>
-            <li>These are the <b>Windows Instructions</b></li>
-        </ol>
-    </div>
-
-    <div id="tab-3" class="tab-content">
-        <ol>
-            <li>These are the <b>Linux Instructions</b></li>
         </ol>
     </div>
 </div>
