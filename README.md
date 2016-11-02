@@ -14,11 +14,11 @@ Run "docpad install livereload" for live reload in browser.
 
 Run "docpad run" to generate the pages.
 
+Go to [localhost:9778](http://localhost:9778)
+
 --
 
 Run "docpad upgrade; docpad update" to update docpad.
-
-Go to [localhost:9778](http://localhost:9778)
 
 ## gh-pages
 
