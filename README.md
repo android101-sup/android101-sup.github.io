@@ -6,11 +6,17 @@
 
 ## Quickstart
 
+Run "npm install -g docpad@6.79" to install docpad.
+
 Run "docpad install eco" for the templating engine to work.
 
 Run "docpad install livereload" for live reload in browser.
 
 Run "docpad run" to generate the pages.
+
+--
+
+Run "docpad upgrade; docpad update" to update docpad.
 
 Go to [localhost:9778](http://localhost:9778)
 
