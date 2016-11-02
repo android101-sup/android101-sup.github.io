@@ -6,22 +6,30 @@
 
 ## Quickstart
 
-Run "npm install -g docpad@6.79" to install docpad.
+Run ```npm install -g docpad@6.79``` to install docpad.
 
-Run "docpad install eco" for the templating engine to work.
+Run ```docpad install eco``` for the templating engine to work.
 
-Run "docpad install livereload" for live reload in browser.
+Run ```docpad install livereload``` for live reload in browser.
 
-Run "docpad run" to generate the pages.
+Run ```docpad run``` to generate the pages.
 
 Go to [localhost:9778](http://localhost:9778)
 
 --
 
-Run "docpad upgrade; docpad update" to update docpad.
+Run ```docpad upgrade; docpad update``` to update docpad.
 
-## gh-pages
+## Editing
 
-Run "docpad install ghpages" to automatically update master branch.
+> Making changes in the master branch will not be permanent. If you want to make changes, make them in this branch
 
-Run "docpad deploy-ghpages --env static" to deploy to master.
+All the pages you need to edit are inside ```src/render```.
+
+If you want to change the template, that lives inside ```src/layouts```. [Quick Ref on Embedded CoffeeScript](https://github.com/sstephenson/eco). Try not to break it :)
+
+## Deploy to master
+
+Run ```docpad install ghpages``` to automatically update master branch.
+
+Run ```docpad deploy-ghpages --env static``` to deploy to master.
