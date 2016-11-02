@@ -7,7 +7,10 @@
 ## Quickstart
 
 Run "docpad install eco" for the templating engine to work.
+
 Run "docpad install livereload" for live reload in browser.
+
+Run "docpad install ghpages" to automatically update master branch.
 
 Run "docpad run" to generate the pages.
 
