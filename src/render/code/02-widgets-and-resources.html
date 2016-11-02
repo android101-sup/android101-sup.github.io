@@ -1,5 +1,12 @@
 ---
 title: "Step 2: Widgets and Resources"
+layout: "workshop"
+tab: "sup"
+isPage: true
+---
+
+---
+title: "Step 2: Widgets and Resources"
 layout: "default"
 tab: "sup"
 isPage: true
@@ -56,59 +63,6 @@ isPage: true
     </div>
 
     <div class="sct sct-secondary">
-        <h3>Layout Properties</h3>
-
-        <p>In the layout, we can see that each widget has various properties. We'll take a look at them now.</p>
-
-        <p>First we see a few lines:</p>
-<pre class="code-block">
-<span class="black">&lt;?</span><span class="blue">xml version=</span>"1.0" <span class="blue">encoding=</span>"utf-8"<span class="black">&lt;</span>
-<span class="black">&lt;LinearLayout</span>
-<span class="blue">xmlns:</span><span class="purple">android</span>="http://schemas.android.com/apk/res/android"
-<span class="blue">xmlns:</span><span class="purple">tools</span><span class="blue">=</span>"http://schemas.android.com/tools"
-<span class="purple">tools</span><span class="blue">:context=</span>".SupActivity"
-</pre>
-        <p>These are necessary to define the XML namespace. The first line is to define our XML configuration. The two lines beginning with <span class="code">xmlns</span> specify namespaces. For example, <span class="code">xmlns:android</span> allows the namespace <span class="code">android</span> to stand in for the URL that it is defined by. Each time you see <span class="code">android</span> in your layout, it is essentially standing in for the entire URL in its place.</p>
-
-        <p>The next line beginning with <span class="code">tools:context</span> is to record which activity the layout is associated with.</p>
-
-        <p class="learn-more"><a href="https://developer.android.com/reference/javax/xml/namespace/NamespaceContext.html">More about Namespaces &rarr;</a></p>
-
-        <p>We mentioned earlier that all widgets must have <b><span class="code">android:layout_width</span></b> and <b><span class="code">android:layout_height</span></b>. These are reflected above. <span class="code">android:layout_width</span> and <span class="code">android:layout_height</span> can either be an integer, <span class="code">fill_parent</span>, <span class="code">match_parent</span>, or <span class="code">wrap_content</span>, all of which are fairly self-explanatory.</p>
-
-        <p class="learn-more"><a href="https://developer.android.com/reference/android/view/ViewGroup.LayoutParams.html">More about LayoutParams &rarr;</a></p>
-
-        <p>A <span class="code">LinearLayout</span> component requires <b><span class="code">android:orientation</span></b> to be filled in. This property has two options: <span class="code">vertical</span> and <span class="code">horizontal</span>.</p>
-
-        <p class="learn-more"><a href="https://developer.android.com/reference/android/widget/LinearLayout.html">More about LinearLayouts &rarr;</a></p>
-
-        <p>You'll notice that the three <span class="code">Button</span> widgets have <span class="code">android:id</span> properties. This is for identification when referencing this widget in code.</p>
-
-        <p>Additionally, all of the <span class="code">Button</span> widgets also have <span class="code">android:text</span> properties. This is to specify what the button will be labeled with.</p>
-
-        <p class="learn-more"><a href="https://developer.android.com/reference/android/widget/Button.html">More about Buttons &rarr;</a></p>
-
-        <p>The rest of the components in this <span class="code">LinearLayout</span> are fairly self-explanatory--mostly for positioning within the layout.</p>
-
-    </div>
-
-    <div class="sct sct-primary">
-        <h3>Types of Resources</h3>
-
-        <p>There are many types of resources that your app can use. The ones that are provided by default in your <span class="code">values</span> directory are <span class="code">colors.xml</span>, <span class="code">dimens.xml</span> <span class="code">strings.xml</span>, and <span class="code">styles.xml</span>.</p>
-
-        <p><b><span class="code">styles.xml</span></b> is useful for consolidating styling elements across multiple pages.</p>
-
-        <p>In <b><span class="code">dimens.xml</span></b>, we store common dimensions for padding, margins, text sizes, etc. There are multiple files in this folder to accommodate for different form factors, or phone sizes.</p>
-
-        <p class="learn-more"><a href="https://developer.android.com/guide/practices/screens_support.html">More about Supporing Multiple Screens &rarr;</a></p>
-
-        <p>The ones we're going to focus on today are <span class="code">colors.xml</span> and <span class="code">strings.xml</span></p>
-
-        <p class="learn-more"><a href="https://developer.android.com/guide/topics/resources/available-resources.html">Learn More &rarr;</a></p>
-    </div>
-
-    <div class="sct sct-secondary">
         <h3>Color Resource</h3>
 
         <p>Open <b><span class="code">values/colors.xml</span></b> and add the following to the bottom:</p>
@@ -143,10 +97,6 @@ isPage: true
 <span class="black">&lt;string</span> <span class="blue">name=</span>"sent"<span class="black">&gt;Sent!&lt;/string&gt;</span>
 <span class="black">&lt;string</span> <span class="blue">name=</span>"error"<span class="black">&gt;Sending failed. Please try again later!&lt;/string&gt;</span>
 </pre>
-
-        <p>The reason why we use a <span class="code">strings.xml</span> is for localization purposes. This means that if you want to release your app in multiple languages, you can easily adjust change the strings in your app.</p>
-
-        <p class="learn-more"><a href="https://developer.android.com/guide/topics/resources/string-resource.html">Learn More &rarr;</a></p>
     </div>
 
     <div class="sct sct-secondary">
@@ -159,15 +109,4 @@ isPage: true
         <p style="color:red;">insert screenshot here. jackie has one yay</p>
     </div>
 
-</div>
-
-<div class="container">
-    <div class="buttons">
-        <div class="previous">
-            <a href="/sup/step1.html" class="btn btn-secondary">&larr; Previous</a>
-        </div>
-        <div class="next">
-            <a href="/sup/step3.html" class="btn btn-secondary">Next &rarr;</a>
-        </div>
-    </div>
 </div>
