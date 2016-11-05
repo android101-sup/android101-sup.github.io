@@ -35,6 +35,7 @@ h3 {
 }
 
 ol>li,
+.sct ul>li,
 .tab-content ul>li {
 	padding: 3px 15px 3px 0;
 }
@@ -73,6 +74,10 @@ ol>li,
 	font-style: italic;
 	padding: 0;
 	margin: 0 0 15px 0;
+}
+
+.under-construction {
+	width: 100%;
 }
 
 

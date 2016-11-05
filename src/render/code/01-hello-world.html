@@ -8,30 +8,54 @@ isPage: true
 <div class="container">
     <h2>Step 1: Hello World</h2>
 
-    <div class="sct sct-primary">
-        <h3>Start Up Android Studio</h3>
-
-        <ol>
-            <li><b>Choose your application name.</b> Let's call ours <b>Sup</b>. In general, keep these in mind for application names:</li>
-            <ul>
-                <li>Don't use hyphens or special characters.</li>
-                <li>Don't use Java reserved keywords.</li>
-                <li>Don't use package names beginning with digits.</li>
-            </ul>
-            <li><b>Choose a company domain.</b> Let's use <b>android101.uci.com</b>. In general, make sure to follow the same rules as above.</li>
-            <li>You can change the project location if you'd like, but we're going to leave it as is.</li>
-            <li>On the next page, <b>select Phone and Tablet</b>. Choose <b>minimum SDK as API 16: Android 4.1 (Jelly Bean)</b>. This indicates the lowest API that this app is guaranteed to work in.</li>
-            <li><b>Click next</b>, and then Android Studio will begin installing the SDK components.</li>
-            <li>On the template page, <b>select Empty Activity</b>.</li>
-            <li>Change the Activity Name to <b>SupActivity</b>.</li>
-            <li><b>Click finish</b>.</li>
-        </ol>
+    <div class="sct sct-secondary">
+        <h3>Setting Up Your Workspace</h3>
     </div>
+
+        <div class="tab-container">
+            <ul class="tabs">
+                <li class="tab current" data-tab="tab-1">Import via Android Studio</li>
+                <li class="tab" data-tab="tab-2">Import Manually</li>
+            </ul>
+        </div>
+        
+        <div class="tab-content tab-1 current">
+            <ol>
+                <li>Open up <b>Android Studio</b> and select <b>Check out project from Version Control > GitHub</b>.</li>
+                <li>You'll need to <b>login with your credentials</b> you created in the <a href="/setup.html">Setup instructions</a>.</li>
+                <li>Enter <span class="code">https://github.com/android101-sup/Sup.git</span> as the Git Repository URL.</li>
+                <li>Use the <b>default Gradle distribution</b>.</li>
+                <li>Android Studio will open up and warn you about Unconfigured Roots. You can ignore this message.</li>
+            </ol>
+
+            <p>Note: If this doesn't work, try importing manually.</p>
+        </div>
+
+        <div class="tab-content tab-2">
+            <ol>
+                <li>
+                    Open up your <b>Terminal</b> and type in the following:
+                    <pre style="margin-top:5px;">git clone https://github.com/android101-sup/Sup.git</pre>
+                </li>
+                <li>Open up <b>Android Studio</b> and select <b>Import Project (Eclipse, ADT, Gradle, etc.)</b>.</li>
+                <li>Navigate to the directory in which you cloned the git repository in earlier.</li>
+                <li>Expand the directory titled "Sup", <b>select <span class="code">build.gradle</span></b>, and <b>select OK</b>.</li>
+                <li>Android Studio will open up and warn you about Unconfigured Roots. You can ignore this message.</li>
+            </ol>
+        </div>
 
     <div class="sct sct-secondary">
         <h3>Android Studio</h3>
 
-        <p style="color:red">need screenshots for this so jackie is supa lazy &amp; doesn't wanna do it.</p>
+        <p>In Android Studio, we have your Project File tree on the left, and your code workspace on the right. At the top, we have a toolbar, and highlighted in the screenshot below are the ones we'll be interacting with the most.</p>
+
+        <img src="/assets/01_AndroidStudioTools.png" style="width:100%;">
+
+        <ul>
+            <li>The <b>green play button</b> is used to run whatever task you have specified in the dropdown menu to the left of it.</li>
+            <li>By default, the <b>dropdown menu</b> is set to the application you're building now.</li>
+            <li>To the right of the play button, we have a <b>green bug</b> that is used to <b>debug and step through</b> your code.</li>
+        </ul>
     </div>
 
     <div class="sct sct-primary">
@@ -40,7 +64,7 @@ isPage: true
         <ol>
             <li>Click the <b>green arrow</b> in your toolbar.</li>
             <li>Select the <b>virtual device</b> you created earlier.</li>
-            <li style="color:red">[ What is this instant run thing it's asking for? ]</li>
+            <li>If an pop up shows up asking about an Instant Run, you can just <b>Proceed without installing</b>.</li>
             <li>Your emulator should start up and show your app running.</li>
         </ol>
 
