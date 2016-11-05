@@ -29,6 +29,16 @@ h3 {
 	text-decoration: underline;
 }
 
+.falling-behind {
+	background-color: #395ec6;
+	color: white;
+	margin: 0 40px;
+	padding: 15px 30px;
+}
+.falling-behind>h3 {
+	text-align: center;
+}
+
 .code {
 	font-family: "Inconsolata", "Courier New", Courier, monospace;
 	font-size: 18px;
@@ -76,8 +86,19 @@ ol>li,
 	margin: 0 0 15px 0;
 }
 
-.under-construction {
+.note {
+	font-style: italic;
+	color: #929292;
+}
+
+img {
 	width: 100%;
+}
+.phone {
+	width: 50%;
+	display: block;
+	margin: 0 auto;
+	min-width: 350px;
 }
 
 
@@ -154,4 +175,21 @@ ul.tabs li.current{
 }
 .code-block .black {
 	color: #000000;
+}
+
+@media (max-width:550px) {
+	.falling-behind {
+		margin: 0;
+	}
+}
+
+@media (max-width:400px) {
+	.phone {
+		width: 100%;
+		min-width: 100%;
+	}
+
+	.code-block {
+		margin: 20px 0;
+	}
 }

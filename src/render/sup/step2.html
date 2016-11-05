@@ -14,7 +14,7 @@ isPage: true
         <p>Open up <span class="code">/res/layout/activity_sup.xml</span>. Replace the entire file with this:</p>
 
 <pre class="code-block">
-<span class="black">&lt;?</span><span class="blue">xml version=</span>"1.0" <span class="blue">encoding=</span>"utf-8"<span class="black">&gt;</span>
+<span class="black">&lt;?</span><span class="blue">xml version=</span>"1.0" <span class="blue">encoding=</span>"utf-8"<span class="black">?&gt;</span>
 <span class="black">&lt;LinearLayout</span>
     <span class="blue">xmlns:</span><span class="purple">android</span>="http://schemas.android.com/apk/res/android"
     <span class="blue">xmlns:</span><span class="purple">tools</span><span class="blue">=</span>"http://schemas.android.com/tools"
@@ -26,7 +26,7 @@ isPage: true
     <span class="purple">android</span><span class="blue">:paddingTop=</span>"@dimen/activity_vertical_margin"
     <span class="purple">android</span><span class="blue">:paddingLeft=</span>"@dimen/activity_horizontal_margin"
     <span class="purple">android</span><span class="blue">:paddingRight=</span>"@dimen/activity_horizontal_margin"
-    <span class="purple">android</span><span class="blue">:background=</span><span class="red">"@color/green"</span><span class="black">&gt;</span>
+    <span class="purple">android</span><span class="blue">:background=</span><span class="red">"@color/colorBackground"</span><span class="black">&gt;</span>
 
     <span class="black">&lt;Button</span>
         <span class="purple">android</span><span class="blue">:layout_width=</span>"match_parent"
@@ -114,8 +114,10 @@ isPage: true
         <p>Open <b><span class="code">values/colors.xml</span></b> and add the following to the bottom:</p>
 
 <pre class="code-block">
-<span class="black">&lt;color</span> <span class="blue">name=</span>"green"<span class="black">&gt;#008000&lt;/color&gt;</span>
+<span class="black">&lt;color</span> <span class="blue">name=</span>"colorBackground"<span class="black">&gt;#CC0000&lt;/color&gt;</span>
 </pre>
+
+        <p>The color provided is red, but you can use whatever hex code for color that you'd like.</p>
 
         <p>This file is used to store color values so we don't have to keep track of the individual hex values. Instead, you can use more user-friendly words to keep track of the colors in your code. You can access this by using <span class="code">@color/green</span> in your layout XML.</p>
     </div>
@@ -156,7 +158,7 @@ isPage: true
 
         <p>Just as before, click the <b>green play button</b> to run your app. You'll see that there's a little green circle at the bottom right of the play button. This just means that change were made since your last run. Now you can see the changes you've made. It should look something like the following:</p>
 
-        <p style="color:red;">insert screenshot here. jackie has one yay</p>
+        <img src="/assets/02_WidgetsAndResources.png" class="phone">
     </div>
 
 </div>
