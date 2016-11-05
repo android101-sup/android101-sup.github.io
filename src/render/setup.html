@@ -12,7 +12,8 @@ isPage: true
         <ul class="tabs">
             <li class="tab current" data-tab="tab-1">OS X</li>
             <li class="tab" data-tab="tab-2">Windows</li>
-            <li class="tab" data-tab="tab-3">Linux</li>
+            <li class="tab" data-tab="tab-3">Debian/Ubuntu</li>
+            <li class="tab" data-tab="tab-4">Fedora</li>
         </ul>
     </div>
 
@@ -48,7 +49,7 @@ isPage: true
         	<ol>
         		<li>If you have not already, follow the instructions to <b><a href="http://brew.sh/">install Homebrew</a></b>.</li>
         		<li><b>Open your terminal</b> and install Git using Homebrew by typing in the following command:<br>
-					<pre class="codeblock" style="margin-top:10px;">brew install git</pre>
+					<pre style="margin-top:10px;">brew install git</pre>
         		</li>
         	</ol>
         	<li>Install using the <a href="https://sourceforge.net/projects/git-osx-installer/files/">Mac Installer</a>.</li>
@@ -63,7 +64,7 @@ isPage: true
     <div class="tab-content tab-2 no-top">
     	<p>For Windows, you have two options for installing git shell to access the CLI. You only need to pick one of the following.</p>
         <ul>
-            <li>Install the <a href="https://desktop.github.com/">Desktop Client</a> from GitHub. This option provides a GUI to git and github. It also installs the git shell.</li>
+            <li><span class="recommended">Recommended</span> Install the <a href="https://desktop.github.com/">Desktop Client</a> from GitHub. This option provides a GUI to git and github. It also installs the git shell.</li>
             <ol>
             	<li>Open up the <b>Desktop Client</b> and follow the prompts.</li>
             	<li>Click the <b>gear icon</b> in the top right corner.</li>
@@ -77,18 +78,34 @@ isPage: true
         </ul>
     </div>
 
-	<!-- LINUX -->
-    <div class="tab-content tab-3 no-top">
-        <ol>
-            <li style="color:red;">These are the <b>Linux Instructions</b></li>
-        </ol>
+	<!-- DEBIAN/UBUNTU -->
+    <div class="tab-content tab-3 no-top" style="padding:0 30px 15px 30px">
+        To install, <b>open up your terminal</b> and install by using apt-get:
+<pre>
+sudo apt-get update
+sudo apt-get install git
+</pre>
+    </div>
+
+	<!-- FEDORA -->
+    <div class="tab-content tab-4 no-top" style="padding:0 30px 15px 30px">
+        To install, <b>open up your terminal</b> and install by using yum:
+        <pre>sudo yum install git</pre>
     </div>
 
 	<!-- GENERAL INSTRUCTIONS AGAIN -->
     <div class="sct sct-primary no-top no-bottom">
-    	<p>Once you've got git installed, you'll need to configure your Git username and email. These will be associated with any future commits. While we won't be committing anything during this project, it <span style="color:red;">may be/is</span> a necessary step to use git. Use the following commands, inserting your own name and email.</p>
+    	<p>Once you've got git installed, verify that you have the right version. Type the following into your terminal.</p>
 
-<pre class="codeblock">
+<pre>
+git --version
+</pre>
+
+		<p>Make sure the result you get is at least <span class="code">git version 2.0</span>.</p>
+
+    	<p>Finally, you'll need to configure your Git username and email. These will be associated with any future commits. While we won't be committing anything during this project, it is a necessary step to use git. Use the following commands, inserting your own name and email.</p>
+
+<pre>
 git config --global user.name "YOUR NAME HERE"
 git config --global user.email "YOUR EMAIL HERE"
 </pre>
