@@ -79,9 +79,6 @@
                 <li class="<%= if @document.tab is 'resources' then 'selected' %>">
                   <a href="/resources.html">Resources</a>
                 </li>
-                <li class="<%= if @document.tab is 'about' then 'selected' %>">
-                  <a href="/about.html">About</a>
-                </li>
               </ul>
             </div>
             <!-- /.navbar-collapse -->
