@@ -5,6 +5,9 @@ body {
 .container {
 	padding-top: 100px;
 }
+.scrollspy-container {
+	position: relative;
+}
 
 h2,
 h3,
@@ -29,16 +32,6 @@ h3 {
 	text-decoration: underline;
 }
 
-.falling-behind {
-	background-color: #395ec6;
-	color: white;
-	margin: 0 40px;
-	padding: 15px 30px;
-}
-.falling-behind>h3 {
-	text-align: center;
-}
-
 .code {
 	font-family: "Inconsolata", "Courier New", Courier, monospace;
 	font-size: 18px;
@@ -48,6 +41,10 @@ ol>li,
 .sct ul>li,
 .tab-content ul>li {
 	padding: 3px 15px 3px 0;
+}
+
+.sidenav {
+	position: fixed;
 }
 
 /* sections */
@@ -89,6 +86,16 @@ ol>li,
 .note {
 	font-style: italic;
 	color: #929292;
+}
+
+.falling-behind {
+	background-color: #395ec6;
+	color: white;
+	margin: 20px 40px 0 40px;
+	padding: 15px 30px;
+}
+.falling-behind>h3 {
+	text-align: center;
 }
 
 img {
@@ -176,10 +183,16 @@ ul.tabs li.current{
 .code-block .black {
 	color: #000000;
 }
+.code-block .grey {
+	color: #858585;
+}
+.code-block .yellow {
+	color: #808000;
+}
 
 @media (max-width:550px) {
 	.falling-behind {
-		margin: 0;
+		margin: 20px 0 0 0;
 	}
 }
 

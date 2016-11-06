@@ -6,7 +6,7 @@
     $('a.page-scroll').bind('click', function(event) {
         var $anchor = $(this);
         $('html, body').stop().animate({
-            scrollTop: ($($anchor.attr('href')).offset().top - 50)
+            scrollTop: ($($anchor.attr('href')).offset().top - 60)
         }, 1250, 'easeInOutExpo');
         event.preventDefault();
     });
@@ -45,4 +45,12 @@ $(document).ready(function(){
         $("."+tab_id).addClass('current');
     })
 
-})
+});
+
+
+// FOR SCROLLSPY
+$('.scrollspy-nav li a').click(function(event) {
+    event.preventDefault();
+    $($(this).attr('href'))[0].scrollIntoView({behavior: "smooth"});
+    scrollBy(0, -50);
+});

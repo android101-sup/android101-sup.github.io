@@ -1,32 +1,14 @@
 ---
-title: "Step 3: ???"
-layout: "default"
+title: "Step 3: Activity to Fragment"
+layout: "workshop"
 tab: "sup"
 isPage: true
 ---
 
 <div class="container">
     <h2>Step 3: Activity to Fragment</h2>
-	
-    <div class="sct sct-primary">
-    	<h3>Inflating Widgets</h3>
 
-    	<p>In this step, we'll look at how the widgets from Step 2 were inflated and put on the screen. Then, we'll refactor our SupActivity to use UIFragments.</p>
-
-    	<p>Open up <span class="code">java/com/uci/android101/supSupActivity.java</span> and look at the <span class="code">onCreate()</span> method. This is called when we create an activity. You'll see that this function calls <span class="code">setContentView()</span>, and passes in the <span class="code">R.layout.activity_sup</span>. <span class="code">R.layout.activity_sup</span> is the resource ID for <span class="code">res/layout/activity_sup.xml</span> we were working on earlier.</p>
-    </div>
-
-	<div class="sct sct-secondary">
-		<h3>Activity to Fragment</h3>
-
-		<p>Why do we refactor? Apps commonly need their UI to be flexible, and using UI Fragments allows just that. A Fragment is a modular piece of an activity, with its own UI, behavior, and lifecycle. You can put multiple fragments in an activity.</p>
-
-        <p class="learn-more"><a href="https://developer.android.com/guide/components/fragments.html">More about Fragments &rarr;</a></p>
-
-        <p>There are 5 steps we need to do in order for an activity to use a UI Fragment.</p>
-    </div>
-
-    <div class="sct sct-primary">
+	<div class="sct sct-primary">
 		<h3>Create a Fragment</h3>
 		<p>First, we want to <b>create a UI by defining widgets in a layout file for the fragment</b>.</p>
 
@@ -49,10 +31,6 @@ isPage: true
 	<span class="purple">android</span>:<span class="blue">id=</span>"@+id/fragment_container"<span class="black">&gt;
 &lt;/FrameLayout&gt;</span>
 </pre>
-
-		<p>The <span class="code">FrameLayout</span> is a generic container view that can be used to host fragments.</p>
-
-        <p class="learn-more"><a href="https://developer.android.com/reference/android/widget/FrameLayout.html">More about Frame Layouts &rarr;</a></p>
 	</div>
 
 	<div class="sct sct-primary">
@@ -76,8 +54,6 @@ isPage: true
 
 		<img src="/assets/03_AddSupportLibrary.png" style="margin-bottom:15px;">
 
-		<p>The purpose of <span class="code">SupFragment</span> is to let the user select a contact and send "Sup" to that contact. We'll implement that later.</p>
-
 		<p>We then set <span class="code">SupFragment</span>'s view by overriding <span class="code">onCreateView(...)</span>. Autocomplete should help you with that. In this function, add the following:</p>
 
 <pre class="code-block">
@@ -86,8 +62,6 @@ isPage: true
 </pre>
 
 		<p class="note">Note: Make sure to include the libraries that are necessary. Generally, Android Studio's autocomplete will allow you to do this. You can also use <span class="code">alt+enter</span> to enter.</p>
-
-		<p>Here, we see the <span class="code">LayoutInflater inflater</span>, that inflates the fragment's view. The first parameter is the view's resource ID. The second parameter is the view's parent, which is needed to configure the widgets. The boolean at the end tells the inflater if we want to add the inflated view to the view's parent. We stated false here because we will add the view in the activity later.</p>
 	</div>
 
 	<div class="sct sct-primary">
@@ -118,10 +92,6 @@ isPage: true
 
 	<div class="sct sct-secondary">
 		<h3>Manage the Activity Lifecycle</h3>
-
-		<p>Now, we'll use an activity to manage <span class="code">SupFragment</span>'s lifecycle.</p>
-
-		<p>We don't need to add anything specific to <span class="code">SupActivity</span> in order to add a fragment to the activity. Therefore, we will create an abstract subclass of Activity that adds a fragment to itself, then subclass it in <span class="code">SupActivity</span>.</p>
 
 		<p>Go to the <b><span class="code">/java/com/uci/android101/sup/</span></b> directory in the Project pane. <b>Right click this</b> and select <b>New > Java Class</b>.</p>
 
@@ -160,15 +130,11 @@ isPage: true
 		<img src="/assets/03_SupActivity.png">
 	</div>
 
-</div>
-
-<div class="container">
-    <div class="buttons">
-        <div class="previous">
-            <a href="/sup/step2.html" class="btn btn-secondary">&larr; Previous</a>
-        </div>
-        <div class="next">
-            <a href="/sup/step4.html" class="btn btn-secondary">Next &rarr;</a>
+    <div class="sct">
+        <div class="falling-behind">
+            <h3>Falling Behind?</h3>
+            <p>Either through the Git Shell (Windows) or in your Terminal (all other OS's), in your project directory, enter:</p>
+            <pre>git checkout step4</pre>
         </div>
     </div>
 </div>
