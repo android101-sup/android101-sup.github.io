@@ -107,6 +107,9 @@ img {
 	margin: 0 auto;
 	min-width: 350px;
 }
+.semi-full {
+	padding: 0 40px 20px;
+}
 
 
 /* tab views */
@@ -193,6 +196,9 @@ ul.tabs li.current{
 @media (max-width:550px) {
 	.falling-behind {
 		margin: 20px 0 0 0;
+	}
+	.semi-full {
+		padding: 0 0 15px 0;
 	}
 }
 
