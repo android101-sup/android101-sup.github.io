@@ -7,7 +7,7 @@
 
     <!-- CSS and JS -->
     <%- @getBlock("styles").add(["/css/bootstrap.css","/css/theme.css","/css/stylesheet.css"]).toHTML() %>
-    <%- @getBlock("scripts").add(["/js/jquery.js","/js/bootstrap.js","/js/scrollreveal.js","/js/scripts.js"]).toHTML() %>
+    <%- @getBlock("scripts").add(["/js/jquery.js","/js/bootstrap.js","/js/scripts.js"]).toHTML() %>
 
     <!-- Custom Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
