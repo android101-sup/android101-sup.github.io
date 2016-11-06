@@ -40,7 +40,7 @@ isPage: true
 
 		<p>Go to <b><span class="code">/java/com/uci/android101/sup</span></b> directory in the Project pane and <b>right click and select New > Java Class</b>.</p>
 
-		<p>Name the class <b><span class="code">SupFragment</span></b> and specify <b><span class="code">(android.support.v4.app)Fragment</span></b> as its superclass. If it's not there, you'll need to add the library dependency.</p>
+		<p>Name the class <b><span class="code">SupFragment</span></b> and specify <b><span class="code">android.support.v4.app.Fragment</span></b> as its superclass. If it's not there, you'll need to add the library dependency.</p>
 	</div>
 
 	<div class="sct sct-secondary">
@@ -48,11 +48,11 @@ isPage: true
 
 		<p>Go to <b>File > Project Structure</b>, then select <b>app</b> under <b>Modules</b> on the left pane. Then select the <b>Dependencies tab</b> and <b>click +</b> at the bottom and choose the <b>Library dependency</b>.</p>
 
-		<img src="/assets/03_AddLibraryDependency.png" style="margin-bottom:15px;">
+		<img src="/assets/03_AddLibraryDependency.png" class="semi-full">
 
-		<p>Highlight the <b>support-v4</b> library and <b>select OK</b>.</p>
+		<p>Highlight the <b>com.android.support:support-v4:25.0.0</b> library and <b>select OK</b>.</p>
 
-		<img src="/assets/03_AddSupportLibrary.png" style="margin-bottom:15px;">
+		<img src="/assets/03_AddSupportLibrary.png" class="semi-full">
 
 		<p>We then set <span class="code">SupFragment</span>'s view by overriding <span class="code">onCreateView(...)</span>. Autocomplete should help you with that. In this function, add the following:</p>
 
