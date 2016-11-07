@@ -5,15 +5,35 @@ tab: "concepts"
 isPage: true
 ---
 
-<div class="container scrollspy-container" data-spy="scroll" data-offset="50">
+<div class="container" style="display:none;">
 	<img src="http://www.ihei.eu/sites/default/files/page_is_under_construction_0.jpg" alt="Under Contsruction" class="under-construction">
+</div>
 
-	<div class="col-md-9" style="display:none;">
+<div class="container scrollspy-container" data-spy="scroll" data-offset="50">
+	<div class="col-md-9">
 		<div class="sct sct-primary" id="activity-lifecycle">
 			<h3>Activity LifeCycle</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<p>An activity is a single entity that has the focus of the user and can be interacted by the user. Activities have 4 states: Active, Running, Paused, and Stopped.</p>
 
-			<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+			<ul>
+				<li>If an activity is in the foreground of the screen (at the top of the activity stack), it is <b>active</b>, or <b>running</b>.</li>
+				<li>If an activity does not have focus but is still visible on the foreground, it is <b>paused</b>.</li>
+				<li>If an activity is not visible or in the background, it is <b>stopped</b>.</li>
+				<li>If an activity is <b>paused</b> or <b>stopped</b>, the system can drop the activity or kill the process to reallocate memory.</li>
+			</ul>
+
+			<img src="https://developer.android.com/images/activity_lifecycle.png" alt="">
+
+			<ul>
+				<li><span class="code">onCreate()</span> is first called when creating an activity. This is commonly where all of the initial setup will be.</li>
+				<li><span class="code">onStart()</span> is when the activity is visible to the user.</li>
+				<li><span class="code">onResume()</span> is when the activity is interacted by the user.</li>
+				<li><span class="code">onPause()</span> is when the user chooses to return to a previous activity.</li>
+				<li><span class="code">onStop()</span> is when the activity is no longer visible to the user.</li>
+				<li><span class="code">onDestroy()</span> is called when the activity is finished and ready to be destroyed to release resources to be reallocated.</li>
+			</ul>
+
+	        <p class="learn-more"><a href="https://developer.android.com/training/basics/activity-lifecycle/index.html">Learn More &rarr;</a></p>
 		</div>
 
 		<div class="sct sct-secondary" id="android-sdks">
@@ -29,17 +49,41 @@ isPage: true
 
 			<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
 		</div>
+
+		<div class="sct sct-secondary" id="intents">
+			<h3>Intents</h3>
+
+			<p>An intent is like a message that holds a set of instructions. They are often used to launch and link activities. Primarily, intents contain action and data. Actions are those that need to be executed, and data is usually the data that the actions operate on. Intents can additionally contain category, type, component, and extras.</p>
+
+			<p>There are two kinds of intents:</p>
+
+			<ul>
+				<li><b>Explicit intents</b> have a specified class that will handle the intent and run the instructions.</li>
+				<li><b>Implicit intents</b> will be delegated based on the information it contains to which ever available component is best to run for the intent. These require more setup, such as specifying an intent filter in the <span class="code">AndroidManifest.xml</span>.</li>
+			</ul>
+
+	        <p class="learn-more"><a href="https://developer.android.com/reference/android/content/Intent.html">Learn More &rarr;</a></p>
+		</div>
+
+		<div class="sct sct-primary" id="ui-threads">
+			<h3>UI Threads</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+			<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+		</div>
 	</div>
 
 
 
 	<!-- SIDEBAR -->
-	<div class="col-md-3" style="display:none;">
+	<div class="col-md-3">
 		<div class="sidenav scrollspy-nav">
 			<ul class="nav">
 				<li><a href="#activity-lifecycle">Activity Lifecycle</a></li>
 				<li><a href="#android-sdks">Android SDKs</a></li>
 				<li><a href="#best-practices">Best Practices</a></li>
+				<li><a href="#intents">Intents</a></li>
+				<li><a href="#ui-threads">UI Threads</a></li>
 			</ul>
 		</div>
 	</div>

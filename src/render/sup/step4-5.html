@@ -1,0 +1,120 @@
+---
+title: "Step 4.5: SDK 23+ Permissions"
+layout: "default"
+tab: "sup"
+isPage: true
+---
+
+<div class="container">
+    <h2>Step 4.5: SDK 23+ Permissions Handling</h2>
+    
+    <div class="sct sct-primary">
+        <h3>Android Marshmallow and Beyond</h3>
+
+        <p>For those of you using Marshmallow or Nougat, you may have noticed that if you try to read one of your contacts or send an SMS, your app crashes. This is because starting with 6.0.0, Android now requires apps to ask permission to do a certain action at <i>run-time</i> (at the time of the action) as opposed to at install-time. This provides more transparency as to what the app is doing and prevents shady apps from doing anything impermissible in the background.</p>
+
+        <p>So, in order to be able to use SMS or read from contacts, we have to implement some more code to ask users for permission.</p>
+
+        <p class="learn-more"><a href="https://developer.android.com/training/permissions/requesting.html">More about Requesting Permission at Run-Time &rarr;</a></p>
+    </div>
+
+    <div class="sct sct-secondary">
+        <h3>Permissions</h3>
+        <p>First, to request for permissions, we should give each of the requests a <i>request code</i> to signify which request we are processing. Add the following to the instance variables of <span class="code">SupFragment.java</span>.</p>
+
+<pre class="code-block">
+<span class="black"><b><span class="blue">private static final</span></b> int <b><span class="purple">READ_CONTACTS</span></b> = 1;
+<b><span class="blue">private static final</span></b> int <b><span class="purple">SEND_SMS</span></b> = 2;</span>
+</pre>
+
+    <p>Next, we need to make a method to prompt the user for permission when we request access to each of these action. Create a new method <span class="code">getPermissionFromUser()</span> in <span class="code">SupFragment.java</span>.</p>
+    
+<pre class="code-block">
+<span class="black"><span class="grey">/**
+ * Prompts user for permission to perform a particular task.
+ */
+ </span>
+<b><span class="blue">public void</span></b> getPermissionFromUser(<b><span class="blue">int</span></b> request) {
+    String permission = <b><span class="blue">null</span></b>;
+    <b><span class="blue">if</span></b> (request == <b><span class="purple">READ_CONTACTS</span></b>) {
+        permission = Manifest.permission.<b><span class="purple">READ_CONTACTS</span></b>;
+    } <b><span class="blue">else if</span></b> (request == <b><span class="purple">SEND_SMS</span></b>) {
+        permission = Manifest.permission.<b><span class="purple">SEND_SMS</span></b>;
+    }
+    <b><span class="blue">if</span></b> (permission != <b><span class="blue">null</span></b> &amp;&amp;
+            ContextCompat.checkSelfPermission(getActivity().getApplicationContext(), permission)
+                    != PackageManager.<b><span class="purple">PERMISSION_GRANTED</span></b>) {
+        requestPermissions(new String[]{permission}, request);
+    }
+}</span>
+</pre>
+
+        <p>And then next add function calls to the top of the <b><span class="code">onClickListener</span></b>s for <b><span class="code">mSelectFriend</span></b> and <b><span class="code">mSendButton</span></b>.
+
+<pre class="code-block">
+<span class="black"><b><span class="purple">mSelectFriend</span></b>.setOnClickListener(<b><span class="blue">new</span></b> View.OnClickListener() {
+    <b><span class="yellow">@Override</span></b>
+    <b><span class="blue">public void</span></b> onClick(View view) {
+        getPermissionFromUser(<b><span class="purple">READ_CONTACTS</span></b>);
+        startActivityForResult(<b><span class="purple">pickContact, REQUEST_CONTACT</span></b>);
+    }
+});
+
+<b><span class="purple">mSendButton</span></b>.setOnClickListener(<b><span class="blue">new</span></b> View.OnClickListener() {
+    <b><span class="yellow">@Override</span></b>
+    <b><span class="blue">public void</span></b> onClick(View view) {
+        getPermissionFromUser(<b><span class="purple">SEND_SMS</span></b>);
+        <b><span class="blue">if</span></b> (<b><span class="purple">mFriend</span></b>.getPhoneNumber() != <b><span class="blue">null</span></b>) {
+            sendSup();
+        } <b><span class="blue">else</span></b> {
+            sendCustomizedSupWithoutPhoneNumber();
+        }
+    }
+});</span>
+</pre>
+    
+        <p>Finally, we want to override the <b><span class="code">onRequestPermissionsResult()</span></b> method in order to display a custom message to let the user know whether or not permission has been granted. We will do this via a toast. Add this override to <span class="code">SupFragment.java</span>.
+
+<pre class="code-block">
+<span class="black"><b><span class="yellow">@Override</span></b>
+<b><span class="blue">public void</span></b> onRequestPermissionsResult(<b><span class="blue">int</span></b> requestCode, <b><span class="yellow">@NonNull</span></b> String[] permissions, <b><span class="yellow">@NonNull</span></b> <b><span class="blue">int</span></b>[] grantResults) {
+    <b><span class="blue">if</span></b> (requestCode == <b><span class="purple">READ_CONTACTS</span></b> || requestCode == <b><span class="purple">SEND_SMS</span></b>) {
+        String permission = <b><span class="blue">null</span></b>;
+        <b><span class="blue">if</span></b> (requestCode == <b><span class="purple">READ_CONTACTS</span></b>) {
+            permission = getString(R.string.<i><b><span class="purple">read_contacts</span></b></i>);
+        } <b><span class="blue">else if</span></b> (requestCode == <b><span class="purple">SEND_SMS</span></b>) {
+            permission = getString(R.string.<i><b><span class="purple">send_sms</span></b></i>);
+        }
+        <b><span class="blue">if</span></b> (permission != <b><span class="blue">null</span></b>) {
+            String result = <b><span class="blue">null</span></b>;
+            <b><span class="blue">if</span></b> (grantResults.length == 1 &&
+                    grantResults[0] == PackageManager.<b><span class="purple">PERMISSION_GRANTED</span></b>) {
+                result = <b><span class="green">" permission granted"</span></b>;
+            } <b><span class="blue">else</span></b> {
+                result = <b><span class="green">" permission denied"</span></b>;
+            }
+            Toast.makeText(getActivity().getApplicationContext(),
+                    permission + result, Toast.<b><span class="purple">LENGTH_SHORT</span></b>).show();
+        }
+    } <b><span class="blue">else</span></b> {
+        <b><span class="blue">super</span></b>.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+}</span>
+</pre>
+    
+        <p>And that should be all there is to it! Re-compile your app and then attempt selecting a contact and sending an SMS again. It should prompt you for permission and you can either grant or deny permission to do either action.</p>
+
+    </div>
+
+</div>
+
+<div class="container">
+    <div class="buttons">
+        <div class="previous">
+            <a href="/sup/step4.html" class="btn btn-secondary">&larr; Previous</a>
+        </div>
+        <div class="next">
+            <a href="/sup/step5.html" class="btn btn-secondary">Next &rarr;</a>
+        </div>
+    </div>
+</div>
