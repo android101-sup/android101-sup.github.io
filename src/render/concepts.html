@@ -5,11 +5,7 @@ tab: "concepts"
 isPage: true
 ---
 
-<div class="container">
-	<img src="http://www.ihei.eu/sites/default/files/page_is_under_construction_0.jpg" alt="Under Contsruction" class="under-construction">
-</div>
-
-<div class="container scrollspy-container" data-spy="scroll" data-offset="50" style="display:none;">
+<div class="container scrollspy-container" data-spy="scroll" data-offset="50">
 	<div class="col-md-9">
 		<div class="sct sct-primary" id="activity-lifecycle">
 			<h3>Activity LifeCycle</h3>
@@ -36,20 +32,6 @@ isPage: true
 	        <p class="learn-more"><a href="https://developer.android.com/training/basics/activity-lifecycle/index.html">Learn More &rarr;</a></p>
 		</div>
 
-		<div class="sct sct-secondary" id="android-sdks">
-			<h3>Android SDKs</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-			<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-		</div>
-
-		<div class="sct sct-primary" id="best-practices">
-			<h3>Best Practices</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-			<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-		</div>
-
 		<div class="sct sct-secondary" id="intents">
 			<h3>Intents</h3>
 
@@ -67,16 +49,53 @@ isPage: true
 
 		<div class="sct sct-primary" id="permissions">
 			<h3>Permissions</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<p>As a user, prior to Marshmallow (SDK 22-), you are prompted to give permissions on installation. For OS versions that are Marshmallow or newer (SDK 23+), permissions will be requested when it is needed based on the activity.</p>
 
-			<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+			<p>As a developer, permissions are not set by default. In order to use protected features of the device, you must include the associated permissions using <span class="code">&lt;uses-permission&gt;</span> tags.</p>
+
+	        <p class="learn-more"><a href="https://developer.android.com/guide/topics/security/permissions.html#permissions">Learn More &rarr;</a></p>
 		</div>
 
-		<div class="sct sct-secondary" id="ui-threads">
-			<h3>UI Threads</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<div class="sct sct-secondary" id="best-practices">
+			<h3>Best Practices</h3>
+			<h4>Readability vs creating objects</h4>
+ 
+			<p>In Android, allocating objects is not free.  (memory allocation adds up and eventually causes the OS to have to deallocate objects which means everything pauses for some length of time in the order of 10 - 50 millisec.)  Of course, that does not mean to go so far towards reducing object allocation that the code becomes readable.  However I think the way this is now is plenty readable, so if I were making the call I would avoid the extra objects.</p>
 
-			<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+			<h4>Using Getters and Setters</h4>
+
+			<p>In our app, we created a POJO (plain old Java object) with just getters and setters. This is a best practice that we observe because it will be useful in more complicated projects, as well as in unit testing. As of now, we have something simple like:</p>
+
+<pre class="code-block">
+<span class="black"><span class="blue"><b>public</b></span> String getPhoneNumber() {
+    <span class="blue"><b>return</b></span> <span class="purple"><b>mPhoneNumber</b></span>;
+}
+
+<span class="blue"><b>public void</b></span> setPhoneNumber(String phoneNumber) {
+    <span class="blue"><b>this</b></span>.<span class="purple"><b>mPhoneNumber</b></span> = phoneNumber;
+}</span>
+</pre>
+
+			<p>In the future, there may be more complicated logic involved in a getter or setter.</p>
+
+			<h4>Debugging</h4>
+
+			<p>To improve the quality of your app, use the logger to log messages to verify that your app is working as you expected. In the future, this allows other developers to understand what's going on in your code for better readability.</p>
+
+			<p>Additionally, when you're debugging your own code, you can use an IDE (such as IntelliJ or Eclipse) or even Google Chrome (depending on what you're making) to debug through your project. You can step through you code and find out where things are breaking.</p>
+
+			<h4>UI Threads</h4>
+
+			<p>The UIThread is the main thread of execution for your application. This is where most of your application code is run. All of your application components (Activities, Services, ContentProviders, BroadcastReceivers) are created in this thread, and any system calls to those components are performed in this thread.</p>
+
+			<ul>
+				<li>Do all UI work (visuals) on UI threads: for example, creating views, buttons, etc.</li>
+				<li>Do all other work on background thread or else the program can hang and crash.</li>
+			</ul>
+
+			<h4>Unit Tests</h4>
+
+			<p>Unit tests are pieces of code you write that test small modular pieces (units) of your code to ensure they are working properly. They are vital to code maintenance during the development process. It is also often a good idea to write your code in a way to make them unit testable.</p>
 		</div>
 	</div>
 
@@ -87,11 +106,9 @@ isPage: true
 		<div class="sidenav scrollspy-nav">
 			<ul class="nav">
 				<li><a href="#activity-lifecycle">Activity Lifecycle</a></li>
-				<li><a href="#android-sdks">Android SDKs</a></li>
-				<li><a href="#best-practices">Best Practices</a></li>
 				<li><a href="#intents">Intents</a></li>
 				<li><a href="#permissions">Permissions</a></li>
-				<li><a href="#ui-threads">UI Threads</a></li>
+				<li><a href="#best-practices">Best Practices</a></li>
 			</ul>
 		</div>
 	</div>
