@@ -62,11 +62,11 @@ isPage: true
 
         <p>First we see a few lines:</p>
 <pre class="code-block">
-<span class="black">&lt;?</span><span class="blue">xml version=</span>"1.0" <span class="blue">encoding=</span>"utf-8"<span class="black">&lt;</span>
+<span class="black">&lt;?</span><span class="blue">xml version=</span>"1.0" <span class="blue">encoding=</span>"utf-8"<span class="black">&gt;</span>
 <span class="black">&lt;LinearLayout</span>
-<span class="blue">xmlns:</span><span class="purple">android</span>="http://schemas.android.com/apk/res/android"
-<span class="blue">xmlns:</span><span class="purple">tools</span><span class="blue">=</span>"http://schemas.android.com/tools"
-<span class="purple">tools</span><span class="blue">:context=</span>".SupActivity"
+    <span class="blue">xmlns:</span><span class="purple">android</span>="http://schemas.android.com/apk/res/android"
+    <span class="blue">xmlns:</span><span class="purple">tools</span><span class="blue">=</span>"http://schemas.android.com/tools"
+    <span class="purple">tools</span><span class="blue">:context=</span>".SupActivity"
 </pre>
         <p>These are necessary to define the XML namespace. The first line is to define our XML configuration. The two lines beginning with <span class="code">xmlns</span> specify namespaces. For example, <span class="code">xmlns:android</span> allows the namespace <span class="code">android</span> to stand in for the URL that it is defined by. Each time you see <span class="code">android</span> in your layout, it is essentially standing in for the entire URL in its place.</p>
 
@@ -95,7 +95,7 @@ isPage: true
     <div class="sct sct-primary">
         <h3>Types of Resources</h3>
 
-        <p>There are many types of resources that your app can use. The ones that are provided by default in your <span class="code">values</span> directory are <span class="code">colors.xml</span>, <span class="code">dimens.xml</span> <span class="code">strings.xml</span>, and <span class="code">styles.xml</span>.</p>
+        <p>There are many types of resources that your app can use. The ones that are provided by default in your <span class="code">values</span> directory are <span class="code">colors.xml</span>, <span class="code">dimens.xml</span>, <span class="code">strings.xml</span>, and <span class="code">styles.xml</span>.</p>
 
         <p><b><span class="code">styles.xml</span></b> is useful for consolidating styling elements across multiple pages.</p>
 
