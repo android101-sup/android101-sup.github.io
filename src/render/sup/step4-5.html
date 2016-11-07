@@ -23,8 +23,8 @@ isPage: true
         <p>First, to request for permissions, we should give each of the requests a <i>request code</i> to signify which request we are processing. Add the following to the instance variables of <span class="code">SupFragment.java</span>.</p>
 
 <pre class="code-block">
-<span class="black"><b><span class="blue">private static final</span></b> int <b><span class="purple">READ_CONTACTS</span></b> = 1;
-<b><span class="blue">private static final</span></b> int <b><span class="purple">SEND_SMS</span></b> = 2;</span>
+<span class="black"><b><span class="blue">private static final int</span></b> <b><span class="purple">READ_CONTACTS</span></b> = 1;
+<b><span class="blue">private static final int</span></b> <b><span class="purple">SEND_SMS</span></b> = 2;</span>
 </pre>
 
     <p>Next, we need to make a method to prompt the user for permission when we request access to each of these action. Create a new method <span class="code">getPermissionFromUser()</span> in <span class="code">SupFragment.java</span>.</p>
