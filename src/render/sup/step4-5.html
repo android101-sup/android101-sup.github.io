@@ -1,109 +1,340 @@
 ---
-title: "Step 4.5: SDK 23+ Permissions"
+title: "Step 4: Implementation"
 layout: "default"
 tab: "sup"
 isPage: true
 ---
 
 <div class="container">
-    <h2>Step 4.5: SDK 23+ Permissions Handling</h2>
+    <h2>Step 4: Implementation</h2>
     
     <div class="sct sct-primary">
-        <h3>Android Marshmallow and Beyond</h3>
+        <h3>Intents</h3>
 
-        <p>For those of you using Marshmallow or Nougat, you may have noticed that if you try to read one of your contacts or send an SMS, your app crashes. This is because starting with 6.0.0, Android now requires apps to ask permission to do a certain action at <i>run-time</i> (at the time of the action) as opposed to install-time. This provides more transparency as to what the app is doing and prevents shady apps from doing anything impermissible in the background.</p>
+        <p>An intent is an object that a component can use to communicate with the OS. We will use an intent to tell the <span class="code">ActivityManager</span> to start an activity for selecting a contact.</p>
 
-        <p>So, in order to be able to use SMS or read from contacts, we have to implement some more code to ask users for permission.</p>
+        <p class="learn-more"><a href="https://developer.android.com/reference/android/content/Intent.html">More about Intents &rarr;</a></p>
 
-        <p class="learn-more"><a href="https://developer.android.com/training/permissions/requesting.html">More about Requesting Permission at Run-Time &rarr;</a></p>
+        <p><b>Add the following to <span class="code">SupFragment.java</span></b> after setting the button for <span class="code">mSelectFriend</span>:</p>
+
+<pre class="code-block">
+<span class="black"><span class="blue"><b>final</b></span> Intent pickContact = <span class="blue"><b>new</b></span> Intent(Intent.<span class="purple"><b><em>ACTION_PICK</em></b></span>, ContactsContract.Contacts.<span class="purple"><b><em>CONTENT_URI</em></b></span>);</span>
+</pre>
+
+        <p>The first argument is what kind of action we want - which is picking something. The second is a URI to the <span class="code">Contacts Provider</span>.</p>
+
+        <p class="learn-more"><a href="https://developer.android.com/guide/topics/providers/contacts-provider.html">More about Contacts Provider &rarr;</a></p>
     </div>
 
     <div class="sct sct-secondary">
-        <h3>Permissions</h3>
-        <p>First, to request for permissions, we should give each of the requests a <i>request code</i> to signify which request we are processing. Add the following to the instance variables of <span class="code">SupFragment.java</span>.</p>
+        <h3>Listeners</h3>
+
+        <p>Now we will add a listener to the button to launch the intent. A listener is an object that responds to an event. In this case, our event is when the user presses the button.</p>
+
+        <p><b>Add this line below the intent you just created:</b></p>
 
 <pre class="code-block">
-<span class="black"><b><span class="blue">private static final int</span></b> <b><span class="purple">READ_CONTACTS</span></b> = 1;
-<b><span class="blue">private static final int</span></b> <b><span class="purple">SEND_SMS</span></b> = 2;</span>
+<span class="black"><span class="purple"><b>mSelectFriend</b></span>.setOnClickListener(<span class="blue"><b>new</b></span> View.OnClickListener() {
+    <b><span class="yellow">@Override</span></b>
+    <b><span class="blue">public void</span></b> onClick(View v) {
+        startActivityForResult(<span class="purple">pickContact, <b><em>REQUEST_CONTACT</em></b></span>);
+    }
+});</span>
 </pre>
 
-    <p>Next, we need to make a method to prompt the user for permission when we request access to each of these action. Create a new method <span class="code">getPermissionFromUser()</span> in <span class="code">SupFragment.java</span>.</p>
-    
+        <p>This passes in an anonymous class implementing the <span class="code">View.OnClickListener</span> interface. It calls <span class="code">startActivityForResult</span> with our <span class="code">pickContact</span> intent because it expects a result from the activity.</p>
+
+        <p>You'll notice that we didn't define <span class="code">REQUEST_CONTACT</span> yet. This is a request code sent to the child activity and is received back by the parent. This is more useful for the parent to distinguish which type of child activity has reported back if it's started multiple activities. Even though we're starting only one child activity, this is a good practice to follow.</p>
+
+        <p>We will <b>define <span class="code">REQUEST_CONTACT</span> as follows:</b></p>
+
+<pre class="code-block"><span class="black"><span class="blue">private static final int</span> <span class="purple"><b><em>REQUEST_CONTACT</em></b></span> = <span class="blue">0</span>;</span></pre>
+
+        <p>Calling <span class="code">startActivityForResult()</span> will give us an intent containing the URI to the selected contact. Thus, we will need to override <span class="code">onActivityResult()</span> in <span class="code">SupFragment.java</span>:</p>
+
 <pre class="code-block">
-<span class="black"><span class="grey">/**
- * Prompts user for permission to perform a particular task.
- */
- </span>
-<b><span class="blue">public void</span></b> getPermissionFromUser(<b><span class="blue">int</span></b> request) {
-    String permission = <b><span class="blue">null</span></b>;
-    <b><span class="blue">if</span></b> (request == <b><span class="purple">READ_CONTACTS</span></b>) {
-        permission = Manifest.permission.<b><span class="purple">READ_CONTACTS</span></b>;
-    } <b><span class="blue">else if</span></b> (request == <b><span class="purple">SEND_SMS</span></b>) {
-        permission = Manifest.permission.<b><span class="purple">SEND_SMS</span></b>;
+<span class="black"><span class="yellow">@Override</span>
+<b><span class="blue">public void</span></b> onActivityResult(<b><span class="blue">int</span></b> requestCode, <b><span class="blue">int</span></b> resultCode, Intent data) {
+    <b><span class="blue">if</span></b> (resultCode != Activity.<span class="purple"><b><em>RESULT_OK</em></b></span>) {
+        <span class="blue"><b>return</b></span>;
     }
-    <b><span class="blue">if</span></b> (permission != <b><span class="blue">null</span></b> &amp;&amp;
-            ContextCompat.checkSelfPermission(getActivity().getApplicationContext(), permission)
-                    != PackageManager.<b><span class="purple">PERMISSION_GRANTED</span></b>) {
-        requestPermissions(new String[]{permission}, request);
+    <b><span class="blue">if</span></b> (requestCode == <span class="purple"><b><em>REQUEST_CONTACT</em></b></span> &amp;&amp; data != <span class="blue"><b>null</b></span>) {
+        Uri contactUri = data.getData();
+        populateName(contactUri);
+    }
+}</span>
+</pre>
+    </div>
+
+    <div class="sct sct-primary">
+        <h3>Populating the Name</h3>
+
+        <p>We now need to implement <span class="code">populateName()</span>, which will get the name of the contact chosen. We will query the contacts database using the URI we got back. The implementation below follows how to use the Android SQLite Library.</p>
+
+        <p><b>Add this to <span class="code">SupFragment</span>:</b></p>
+
+<pre class="code-block">
+<span class="black"><span class="grey"><em>/**
+ * Retrieves the contact name and phone number from Address Book
+ * <b><u>@param</u> contactUri</b>
+ */</em></span>
+<span class="blue"><b>private void</b></span> populateName(Uri contactUri){
+    String[] queryFields = <span class="blue"><b>new</b></span> String[] {
+        ContactsContract.Contacts.<span class="purple"><b>DISPLAY_NAME</b></span>,
+        ContactsContract.Contacts.<span class="purple"><b>HAS_PHONE_NUMBER</b></span>,
+        ContactsContract.Contacts.<span class="purple"><b>_ID</b></span>
+    };
+
+    Cursor cursor = getActivity().getContentResolver()
+            .query(contactUri, queryFields, <span class="blue"><b>null</b></span>, <span class="blue"><b>null</b></span>, <span class="blue"><b>null</b></span>);
+    <span class="blue"><b>try</b></span> {
+        <span class="blue"><b>if</b></span> (cursor.getCount() == <span class="blue">0</span>) {
+            <span class="blue"><b>return</b></span>;
+        }
+        cursor.moveToFirst();
+        <span class="blue"><b>int</b></span> nameColumnIndex = cursor.getColumnIndex(ContactsContract.Contacts.<span class="purple"><b>DISPLAY_NAME</b></span>);
+        String name = cursor.getString(nameColumnIndex);
+
+        <span class="purple"><b>mFriend</b></span>.setFriendName(name);
+        <span class="purple"><b>mSelectFriend</b></span>.setText(name);
+
+        <span class="blue"><b>if</b></span> (name != <span class="blue"><b>null</b></span>) {
+            <span class="blue"><b>int</b></span> hasPhoneColumnIndex = cursor.getColumnIndex(ContactsContract.Contacts.<span class="purple"><b>HAS_PHONE_NUMBER</b></span>);
+            <span class="blue"><b>int</b></span> idColumnIndex = cursor.getColumnIndex(ContactsContract.Contacts.<span class="purple"><b>_ID</b></span>);
+            String hasPhone = cursor.getString(hasPhoneColumnIndex);
+            String id = cursor.getString(idColumnIndex);
+
+            populatePhoneNumber(hasPhone.equalsIgnoreCase(</span><b><span class="green">"1"</span></b><span class="black">), id);
+        }
+    } <span class="blue"><b>finally</b></span> {
+        <b><span class="blue">if</span></b> (cursor != <span class="blue"><b>null</b></span>) {
+            cursor.close();
+        }
     }
 }</span>
 </pre>
 
-        <p>And then next add function calls to the top of the <b><span class="code">onClickListener</span></b>s for <b><span class="code">mSelectFriend</span></b> and <b><span class="code">mSendButton</span></b>.
+    </div>
+
+    <div class="sct sct-secondary">
+        <h3>Create a POJO</h3>
+
+        <p>Now we need to create a private field to store the information we get back. As you can guess based on the error Android Studio is giving you now, we will need to create a class for <span class="code">mFriend</span>. Let's call this the <span class="code">Friend</span> class. First, add this to <span class="code">SupFragment</span>:</p>
+
+<pre class="code-block"><span class="black"><span class="blue"><b>private</b></span> Friend <span class="purple"><b>mFriend</b></span>;</span></pre>
+
+        <p>Next, <b>create a java class named <span class="code">Friend</span></b> in <span class="code">com.uci.android101.sup</span>. (You should know how to create new classes by now :) )</p>
+
+        <p>This is your standard POJO (Plain Old Java Object); add this to the class:</p>
 
 <pre class="code-block">
-<span class="black"><b><span class="purple">mSelectFriend</span></b>.setOnClickListener(<b><span class="blue">new</span></b> View.OnClickListener() {
-    <b><span class="yellow">@Override</span></b>
-    <b><span class="blue">public void</span></b> onClick(View view) {
-        getPermissionFromUser(<b><span class="purple">READ_CONTACTS</span></b>);
-        startActivityForResult(<b><span class="purple">pickContact, REQUEST_CONTACT</span></b>);
-    }
-});
+<span class="black"><span class="blue"><b>private</b></span> String <span class="purple"><b>mFriendName</b></span>;
+<span class="blue"><b>private</b></span> String <span class="purple"><b>mPhoneNumber</b></span>;
 
-<b><span class="purple">mSendButton</span></b>.setOnClickListener(<b><span class="blue">new</span></b> View.OnClickListener() {
-    <b><span class="yellow">@Override</span></b>
-    <b><span class="blue">public void</span></b> onClick(View view) {
-        getPermissionFromUser(<b><span class="purple">SEND_SMS</span></b>);
-        <b><span class="blue">if</span></b> (<b><span class="purple">mFriend</span></b>.getPhoneNumber() != <b><span class="blue">null</span></b>) {
+<span class="blue"><b>public</b></span> String getPhoneNumber() {
+    <span class="blue"><b>return</b></span> <span class="purple"><b>mPhoneNumber</b></span>;
+}
+
+<span class="blue"><b>public void</b></span> setPhoneNumber(String phoneNumber) {
+    <span class="blue"><b>this</b></span>.<span class="purple"><b>mPhoneNumber</b></span> = phoneNumber;
+}
+
+<span class="blue"><b>public</b></span> String getFriendName() {
+    <span class="blue"><b>return</b></span> <span class="purple"><b>mFriendName</b></span>;
+}
+
+<span class="blue"><b>public void</b></span> setFriendName(String friendName) {
+    <span class="blue"><b>this</b></span>.<span class="purple"><b>mFriendName</b></span> = friendName;
+}</span>
+</pre>
+
+        <p>Now let's go back to <span class="code">SupFragment.java</span>. <b>Put this line at the beginning of <span class="code">onCreateView</span></b> so that we prevent getting a NullPointerException:</p>
+
+<pre class="code-block">
+<span class="black"><span class="blue"><b>if</b></span> (<span class="purple"><b>mFriend</b></span> == <span class="blue"><b>null</b></span>) {
+    <span class="purple"><b>mFriend</b></span> = <span class="blue"><b>new</b></span> Friend();
+}
+</span></pre>
+
+        <p>We'll also create the <span class="code">populatePhoneNumber()</span> function that <span class="code">populateName</span> calls. <b>Add this to <span class="code">SupFragment</span>:</b></p>
+
+<pre class="code-block">
+<span class="black"><span class="grey"><em>/**
+ * Retrieves the phone number from Address Book
+ * <b><u>@param</u> hasPhone</b> true if phone number is found, false otherwise
+ * <b><u>@param</u> id</b> id of the contact
+ */</em></span>
+<span class="blue"><b>private void</b></span> populatePhoneNumber(<span class="blue"><b>boolean</b></span> hasPhone, String id){
+    String phoneNumber = <span class="blue"><b>null</b></span>;
+    <b><span class="blue">if</span></b> (hasPhone) {
+        Cursor phones = getActivity().getContentResolver()
+        .query(ContactsContract.CommonDataKinds.Phone.<span class="purple"><b>CONTENT_URI</b></span>, <span class="blue"><b>null</b></span>,
+        ContactsContract.CommonDataKinds.Phone.<span class="purple"><b>CONTACT_ID</b></span> + <b><span class="greem">" = "</span></b> + id,
+           <span class="blue"><b>null</b></span>, <span class="blue"><b>null</b></span>);
+        <span class="blue"><b>try</b></span> {
+            phones.moveToFirst();
+            phoneNumber = phones.getString(phones.getColumnIndex(<b><span class="green">"data1"</span></b>));
+        } <span class="blue"><b>finally</b></span> {
+           <span class="blue"><b>if</b></span> (phones != <span class="blue"><b>null</b></span>) {
+                phones.close();
+           }
+        }
+    }
+    <span class="purple"><b>mFriend</b></span>.setPhoneNumber(phoneNumber);
+}</span>
+</pre>
+    </div>
+
+    <div class="sct sct-primary">
+        <h3>Permissions</h3>
+
+        <p>We need to request permissions from the Android OS in order to be able to get the contacts info. Permissions is a security mechanism - that way, apps don't have arbitrary access to your data. We need to add a permission to read <span class="code">ContactsContract.Contacts._ID</span> from the contacts database to get the phone number in the <span class="code">CommonDataKinds.Phone</span> table. <b>Add the following tag in <span class="code">/manifests/AndroidManifest.xml</span>:</b></p>
+
+<pre class="code-block">
+<span class="black">&lt;uses-permission <span class="purple">android</span>:<span class="blue">name</span>=<span class="green">"android.permission.READ_CONTACTS"</span> /&gt;</span>
+</pre>
+        <p>This is what your <span class="code">AndroidManifest.xml</span> should look like now:</p>
+
+        <img src="/assets/04_AndroidManifest.png">
+
+        <p class="learn-more"><a href="https://developer.android.com/guide/topics/security/permissions.html">More about Permissions &rarr;</a></p>
+
+        <p>Now <b>press Play to run your app.</b> You should now be able to press the SelectFriend button, choose a contact, and see the text on the SelectFriend change to your contact's name.</p>
+    </div>
+
+    <div class="sct sct-secondary">
+        <h3>Rotation Bug</h3>
+
+        <p>In the app, try selecting a contact, then rotating your device or emulator. If you're on an emulator, look for the rotation icon.</p>
+
+        <p>You will notice that the name of the contact you selected disappears, and you end up going back to the original screen with the SelectFriend button.</p>
+
+        <p>This is because Android, by default, destroys and recreates the parent activity when the device is rotated. We will want to save data across rotation. To do this, we will store our data in a Bundle.</p>
+
+        <p class="learn-more"><a href="https://developer.android.com/reference/android/os/Bundle.html">More about Bundles &rarr;</a></p>
+
+        <p>Let's go to <span class="code">SupFragment.java</span> and <b>override <span class="code">onSaveInstanceState()</span>. Add this after <span class="code">super.onSaveInstanceState()</span>:</b></p>
+
+<pre class="code-block">
+<span class="black"><span class="blue"><b>if</b></span> (mFriend != <span class="blue"><b>null</b></span>) {
+    outState.putString(<span class="purple"><b>SAVED_STATE_FRIEND_NAME</b></span>, <span class="purple"><b>mFriend</b></span>.getFriendName());
+    outState.putString(<span class="purple"><b>SAVED_STATE_FRIEND_PHONE_NUMBER</b></span>, <span class="purple"><b>mFriend</b></span>.getPhoneNumber());
+}</span>
+</pre>
+
+        <p><b>Add the missing constants at the top of <span class="code">SupFragment.java</span></b></p>
+
+<pre class="code-block">
+<span class="black"><span class="blue"><b>private static final</b></span> String <span class="purple"><b>SAVED_STATE_FRIEND_NAME</b></span> = <span class="green">"SAVED_STATE_FRIEND_NAME"</span>;
+<span class="blue"><b>private static final</b></span> String <span class="purple"><b>SAVED_STATE_FRIEND_PHONE_NUMBER</b></span> = <span class="green">"SAVED_STATE_FRIEND_PHONE_NUMBER"</span>;</span>
+</pre>
+
+        <p>Now we need to display the saved contact info. <b>Add the following to <span class="code">onCreateView()</span> after the null check on <span class="code">mFriend</span>:</b></p>
+
+<pre class="code-block">
+<span class="black">String savedContactName = <span class="blue"><b>null</b></span>;
+<span class="blue"><b>if</b></span> (savedInstanceState != <span class="blue"><b>null</b></span>){
+    savedContactName = savedInstanceState.getString(<span class="purple"><b>SAVED_STATE_FRIEND_NAME</b></span>);
+    String number = savedInstanceState.getString(<span class="purple"><b>SAVED_STATE_FRIEND_PHONE_NUMBER</b></span>);
+
+    <span class="purple"><b>mFriend</b></span>.setFriendName(savedContactName);
+    <span class="purple"><b>mFriend</b></span>.setPhoneNumber(number);
+}</span>
+</pre>
+
+        <p>Then we set the text on the SelectFriend button if <span class="code">savedContactName</span> has been set. <b>Add the following after we get a reference to the SelectFriend button:</b></p>
+
+<pre class="code-block">
+<span class="black"><span class="blue"><b>if</b></span> (savedContactName != <span class="blue"><b>null</b></span>) {
+    <span class="purple"><b>mSelectFriend</b></span>.setText(savedContactName);
+}</span>
+</pre>
+
+        <p><b>Press Play again</b> and now you can verify that your selected contact's name is added back to the Select Friend button even if you rotate your screen.</p>
+    </div>
+
+    <div class="sct sct-primary">
+        <h3>Send Button</h3>
+
+        <p>Now that we have a contact's name and phone number, we can send an SMS once the user presses the SendButton. <b>Add this at the end of <span class="code">onCreateView() </span>after we get a reference to SendButton:</b></p>
+
+<pre class="code-block">
+<span class="black"><span class="purple"><b>mSendButton</b></span>.setOnClickListener(<span class="blue"><b>new</b></span> View.OnClickListener() {
+    <span class="yellow">@Override</span>
+    <span class="blue"><b>public void</b></span> onClick(View v) {
+        <span class="blue"><b>if</b></span> (<span class="purple"><b>mFriend</b></span>.getPhoneNumber() != <span class="blue"><b>null</b></span>) {
             sendSup();
-        } <b><span class="blue">else</span></b> {
+        } <span class="blue"><b>else</b></span> {
             sendCustomizedSupWithoutPhoneNumber();
         }
     }
 });</span>
 </pre>
-    
-        <p>Finally, we want to override the <b><span class="code">onRequestPermissionsResult()</span></b> method in order to display a custom message to let the user know whether or not permission has been granted. We will do this via a toast. Add this override to <span class="code">SupFragment.java</span>.
+
+        <p>Now we want to just <b>implement <span class="code">sendSup()</span></b>.</p>
 
 <pre class="code-block">
-<span class="black"><b><span class="yellow">@Override</span></b>
-<b><span class="blue">public void</span></b> onRequestPermissionsResult(<b><span class="blue">int</span></b> requestCode, <b><span class="yellow">@NonNull</span></b> String[] permissions, <b><span class="yellow">@NonNull</span></b> <b><span class="blue">int</span></b>[] grantResults) {
-    <b><span class="blue">if</span></b> (requestCode == <b><span class="purple">READ_CONTACTS</span></b> || requestCode == <b><span class="purple">SEND_SMS</span></b>) {
-        String permission = <b><span class="blue">null</span></b>;
-        <b><span class="blue">if</span></b> (requestCode == <b><span class="purple">READ_CONTACTS</span></b>) {
-            permission = getString(R.string.<i><b><span class="purple">read_contacts</span></b></i>);
-        } <b><span class="blue">else if</span></b> (requestCode == <b><span class="purple">SEND_SMS</span></b>) {
-            permission = getString(R.string.<i><b><span class="purple">send_sms</span></b></i>);
-        }
-        <b><span class="blue">if</span></b> (permission != <b><span class="blue">null</span></b>) {
-            String result = <b><span class="blue">null</span></b>;
-            <b><span class="blue">if</span></b> (grantResults.length == 1 &&
-                    grantResults[0] == PackageManager.<b><span class="purple">PERMISSION_GRANTED</span></b>) {
-                result = <b><span class="green">" permission granted"</span></b>;
-            } <b><span class="blue">else</span></b> {
-                result = <b><span class="green">" permission denied"</span></b>;
-            }
-            Toast.makeText(getActivity().getApplicationContext(),
-                    permission + result, Toast.<b><span class="purple">LENGTH_SHORT</span></b>).show();
-        }
-    } <b><span class="blue">else</span></b> {
-        <b><span class="blue">super</span></b>.onRequestPermissionsResult(requestCode, permissions, grantResults);
+<span class="black"><span class="grey"><em>/**
+ * Method responsible for sending sup message
+ */</em></span>
+<span class="blue"><b>private void</b></span> sendSup() {
+    SmsManager smsManager;
+    <span class="blue"><b>try</b></span> {
+        smsManager = SmsManager.getDefault();
+        smsManager.sendTextMessage(<span class="purple"><b>mFriend</b></span>.getPhoneNumber(), <span class="blue"><b>null</b></span>, getString(R.string.<span class="purple"><b><em>message</em></b></span>), <span class="blue"><b>null</b></span>, <span class="blue"><b>null</b></span>);
+        Toast.makeText(getActivity().getApplicationContext(), getString(R.string.<span class="purple"><b><em>sent</em></b></span>),
+                Toast.<span class="purple"><b><em>LENGTH_LONG</em></b></span>).show();
+    } <span class="blue"><b>catch</b></span> (Exception e) {
+        Toast.makeText(getActivity().getApplicationContext(),
+                getString(R.string.<span class="purple"><b><em>sup_error</em></b></span>),
+                Toast.<span class="purple"><b><em>LENGTH_LONG</em></b></span>).show();
+        e.printStackTrace();
+    } <span class="blue"><b>finally</b></span> {
+        <span class="purple"><b>mSelectFriend</b></span>.setText(getString(R.string.<span class="purple"><b><em>select_friend</em></b></span>));
     }
 }</span>
 </pre>
-    
-        <p>And that should be all there is to it! Re-compile your app and then attempt selecting a contact and sending an SMS again. It should prompt you for permission and you can either grant or deny permission to do either action.</p>
 
+        <p>We send an SMS message using <span class="code">SmsManager.sendTextMessage()</span> to the phone number stored. Then, we display a toast to notify the user that the text was sent by using <span class="code">R.string.sent</span> resource, or that there was an error, using <span class="code">R.string.sup_error</span>. In the <span class="code">finally</span> block, we <b>reset the text for SelectFriend.</b></p>
+    </div>
+
+    <div class="sct sct-secondary">
+        <h3>An Alternative Flow</h3>
+
+        <p>Since both buttons display on the screen even if a user is not set, we need to respond to the user when they tap the send button. Responding to invalid states, such as this, is part of good user experience (UX) design.</p>
+
+        <p>We have one more unimplemented function. <b>Add this to <span class="code">SupFragment.java</span>:</b></p>
+
+<pre class="code-block">
+<span class="black"><span class="grey"><em>/**
+ * Method responsible for sending howdy message without phone number
+ */</em></span>
+<span class="blue"><b>private void</b></span> sendCustomizedSupWithoutPhoneNumber(){
+    Toast.makeText(getActivity().getApplicationContext(), R.string.<span class="purple"><b><em>noPhoneNumber</em></b></span>, Toast.<span class="purple"><b><em>LENGTH_SHORT</em></b></span>).show();
+
+    Intent i = <span class="blue"><b>new</b></span> Intent(Intent.<span class="purple"><b><em>ACTION_SEND</em></b></span>);
+    i.setType(<span class="green">"text/plain"</span>);
+    i.putExtra(Intent.<span class="purple"><b><em>EXTRA_TEXT</em></b></span>, getString(R.string.<span class="purple"><b><em>message</em></b></span>));
+    startActivity(i);
+}</span>
+</pre>
+
+        <p>This method is called in the case just described. It displays a toast to notify the user that a phone number hasn't been selected, and allows the user to send "Sup" using another application that supports the SEND action.</p>
+
+        <p>Finally, <b>add one more permission to <span class="code">AndroidManifest.xml</span>:</b></p>
+
+<pre class="code-block">
+<span class="black">&lt;uses-permission <span class="purple">android</span>:<span class="blue">name</span>=<span class="green">"android.permission.SEND_SMS"</span> /&gt;</span>
+</pre>
+
+    </div>
+
+    <div class="sct sct-primary">
+        <h3>Run Your App</h3>
+
+        <p><b>Press Play and send someone a Sup!</b></p>
+
+        <p class="note">Note: If you're using an emulator, you won't be able to send an SMS to a real number. Instead, you can spin up a new emulator and send a text to that emulator. You'll find the last four digits in the toolbar at the top of the window. This will be the number to add as a contact. Add it to your first emulator as a contact and send a Sup to that contact.</p>
     </div>
 
 </div>
@@ -111,10 +342,10 @@ isPage: true
 <div class="container">
     <div class="buttons">
         <div class="previous">
-            <a href="/sup/step4.html" class="btn btn-secondary">&larr; Previous</a>
+            <a href="/sup/step3.html" class="btn btn-secondary">&larr; Previous</a>
         </div>
         <div class="next">
-            <a href="/sup/step5.html" class="btn btn-secondary">Next &rarr;</a>
+            <a href="/sup/step4-5.html" class="btn btn-secondary">Next &rarr;</a>
         </div>
     </div>
 </div>

@@ -1,32 +1,33 @@
 ---
 title: "Step 4.5: SDK 23+ Permissions"
-layout: "workshop"
+layout: "default"
 tab: "sup"
 isPage: true
 ---
 
 <div class="container">
     <h2>Step 4.5: SDK 23+ Permissions Handling</h2>
-
+    
     <div class="sct sct-primary">
         <h3>Android Marshmallow and Beyond</h3>
 
-        <p>For those of you using Marshmallow or Nougat, you may have noticed that if you try to read one of your contacts or send an SMS, your app crashes. This is because starting with 6.0.0, Android now requires apps to ask permission to do a certain action at <i>run-time</i> (at the time of the action) as opposed to at install-time. This provides more transparency as to what the app is doing and prevents shady apps from doing anything impermissible in the background.</p>
+        <p>For those of you using Marshmallow or Nougat, you may have noticed that if you try to read one of your contacts or send an SMS, your app crashes. This is because starting with 6.0.0, Android now requires apps to ask permission to do a certain action at <i>run-time</i> (at the time of the action) as opposed to install-time. This provides more transparency as to what the app is doing and prevents shady apps from doing anything impermissible in the background.</p>
 
         <p>So, in order to be able to use SMS or read from contacts, we have to implement some more code to ask users for permission.</p>
+
+        <p class="learn-more"><a href="https://developer.android.com/training/permissions/requesting.html">More about Requesting Permission at Run-Time &rarr;</a></p>
     </div>
 
     <div class="sct sct-secondary">
-    	<h3>Permissions</h3>
-
-    	<p>Add the following to the instance variables of <span class="code">SupFragment.java</span>.</p>
+        <h3>Permissions</h3>
+        <p>First, to request for permissions, we should <b>give each of the requests a <i>request code</i></b> to signify which request we are processing. Add the following to the instance variables of <span class="code">SupFragment.java</span>.</p>
 
 <pre class="code-block">
-<span class="black"><b><span class="blue">private static final</span></b> int <b><span class="purple">READ_CONTACTS</span></b> = 1;
-<b><span class="blue">private static final</span></b> int <b><span class="purple">SEND_SMS</span></b> = 2;</span>
+<span class="black"><b><span class="blue">private static final int</span></b> <b><span class="purple">READ_CONTACTS</span></b> = <span class="blue">1</span>;
+<b><span class="blue">private static final int</span></b> <b><span class="purple">SEND_SMS</span></b> = <span class="blue">2</span>;</span>
 </pre>
 
-		<p>Create a new method <span class="code">getPermissionFromUser()</span> in <span class="code">SupFragment.java</span>.</p>
+    <p>Next, we need to make a method to prompt the user for permission when we request access to each of these action. <b>Create a new method <span class="code">getPermissionFromUser()</span> in <span class="code">SupFragment.java</span></b>.</p>
     
 <pre class="code-block">
 <span class="black"><span class="grey">/**
@@ -48,7 +49,7 @@ isPage: true
 }</span>
 </pre>
 
-<p>And then next add function calls to the top of the <b><span class="code">onClickListener</span></b>s for <b><span class="code">mSelectFriend</span></b> and <b><span class="code">mSendButton</span></b>.
+        <p>And then next <b>add function calls to the top of the <span class="code">onClickListener</span></b>s for <b><span class="code">mSelectFriend</span></b> and <b><span class="code">mSendButton</span></b>.
 
 <pre class="code-block">
 <span class="black"><b><span class="purple">mSelectFriend</span></b>.setOnClickListener(<b><span class="blue">new</span></b> View.OnClickListener() {
@@ -72,7 +73,7 @@ isPage: true
 });</span>
 </pre>
     
-        <p>Finally, we want to override the <b><span class="code">onRequestPermissionsResult()</span></b> method in order to display a custom message to let the user know whether or not permission has been granted. We will do this via a toast. Add this override to <span class="code">SupFragment.java</span>.
+        <p>Finally, we want to <b>override the <span class="code">onRequestPermissionsResult()</span> method</b> in order to display a custom message to let the user know whether or not permission has been granted. We will do this via a toast. Add this override to <span class="code">SupFragment.java</span>.
 
 <pre class="code-block">
 <span class="black"><b><span class="yellow">@Override</span></b>
@@ -100,5 +101,20 @@ isPage: true
     }
 }</span>
 </pre>
+    
+        <p>And that should be all there is to it! <b>Re-compile your app</b> and then attempt selecting a contact and sending an SMS again. It should prompt you for permission and you can either grant or deny permission to do either action.</p>
+
+    </div>
+
+</div>
+
+<div class="container">
+    <div class="buttons">
+        <div class="previous">
+            <a href="/sup/step4.html" class="btn btn-secondary">&larr; Previous</a>
+        </div>
+        <div class="next">
+            <a href="/sup/step5.html" class="btn btn-secondary">Next &rarr;</a>
+        </div>
     </div>
 </div>

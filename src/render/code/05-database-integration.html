@@ -1,26 +1,36 @@
 ---
 title: "Step 5: Database Integration"
-layout: "workshop"
+layout: "default"
 tab: "sup"
 isPage: true
 ---
 
 <div class="container">
     <h2>Step 5: Database Integration</h2>
-
+    
     <div class="sct sct-primary">
-    	<h3>Configure the TextView</h3>
+        <h3>SQLite</h3>
 
-    	<p>Update our <span class="code">emptyLatestSup</span> string in <span class="code">res/values/strings.xml</span> and replace the todo with with <span class="code">No sups sent recently."</span></p>
+        <p>As our last step, we'll be making adding database support in order to populate the text below our send button with information regarding the last Sup you sent. We will be using SQLite to store the last recipient's contract information.</p>
 
-        <p>Next, we will add an <b><span class="code">OnClickListener</span></b> to <span class="code">mLastSupSent</span>. Add the following fields to the top of our <span class="code">SupFragment.java</span></p>
+        <p class="learn-more"><a href="https://developer.android.com/training/basics/data-storage/databases.html">More about Databases &rarr;</a></p>
+    </div>
+
+    <div class="sct sct-secondary">
+        <h3>Configure the TextView</h3>
+
+        <p>First, we have to configure our <b><span class="code">TextView</span></b> to properly display our last sup sent in the format we previously established in our <span class="code">strings.xml</span>.</p>
+        
+        <p><b>Update our <span class="code">emptyLatestSup</span> string</b> in <span class="code">res/values/strings.xml</span> and replace the todo with with <span class="code">No sups sent recently."</span></p>
+
+        <p>Next, we will <b>add an <span class="code">OnClickListener</span> to <span class="code">mLastSupSent</span>.</b> Add the following fields to the top of our <span class="code">SupFragment.java</span></p>
         
 <pre class="code-block">
 <span class="black"><b><span class="blue">private</span></b> String <b><span class="purple">mLastSupSentFormat</span></b>;
 <b><span class="blue">private</span></b> String <b><span class="purple">mSupDateFormat</span></b>;
 </span></pre>
 
-        <p>Next, add the following to our <b><span class="code">onCreateView()</span></b> below our reference to <span class="code">mLastSupSent</span>.</p>
+        <p>Next, <b>add the following to our <span class="code">onCreateView()</span></b> below our reference to <span class="code">mLastSupSent</span>.</p>
         
 <pre class="code-block">
 <span class="black"><b><span class="purple">mSupDateFormat</span></b> = getString(R.string.<b><i><span class="purple">dateFormat</span></i></b>);
@@ -32,14 +42,16 @@ String lastSupText = SupDao.get(getContext()).getLatestSup(mLastSupSentFormat, m
 <b><span class="purple">mLastSupSent</span></b>.setText(lastSupText);
 </span></pre>
 
-		<p>In our <b><span class="code">sendSup()</span></b> method, add the following two calls in our <span class="code">finally</span> block.</p>
+        <p>We use formatted strings for the message and the date displayed in our <b><span class="code">TextView</span></b>. The class we are currently missing, <b><span class="code">SupDao</span></b> (Dao meaning Data Access Object), will be responsible for saving and retrieving the information regarding our last Sup that was sent. We'll be adding this shortly, but first we will be writing the rest of the necessary code for SQLite in <span class="code">SupFragment.java</span>.</p>
+
+        <p>In our <b><span class="code">sendSup()</span></b> method, <b>add the following two calls in our <span class="code">finally</span> block.</b></p>
 
 <pre class="code-block">
 <span class="black">saveSup();
 setLatestSup();</span>
 </pre>
 
-        <p>Now let's define these methods. Add these to <span class="code">SupFragment.java</span>.</p>
+        <p>Now let's define these methods. <b>Add these to <span class="code">SupFragment.java</span></b>.</p>
 
 <pre class="code-block">
 <span class="black"><b><span class="blue">private</span></b> <b><span class="blue">void</span></b> saveSup() {
@@ -55,11 +67,14 @@ setLatestSup();</span>
     <b><span class="purple">mLastSupSent</span></b>.setText(lastSupText);
 }</span>
 </pre>
+
+        <p><b><span class="code">saveSup()</span></b> creates an instance of the class <span class="code">Sup</span> which we will implement next. This instance is saved to our SQLite database. <b><span class="code">setLatestSup()</span></b> retrieves the String to display, constructed from the latest Sup saved in the database, from <b><span class="code">SupDao</span></b> and sets the text in our <b><span class="code">TextView</span></b>.</p>
     </div>
 
-    <div class="sct sct-secondary">
-    	<h3>Sup</h3>
-    	<p>Next we need to create a model object which will be saved into our database. Create a new class called <b><span class="code">Sup</span></b> in <span class="code">com.uci.android101.sup</span> and use the following: </p>
+    <div class="sct sct-primary">
+        <h3>Sup</h3>
+
+        <p>Next we need to create a model object which will be saved into our database. <b>Create a new class called <span class="code">Sup</span></b> in <span class="code">com.uci.android101.sup</span> and use the following: </p>
 
 <pre class="code-block">
 <span class="black"><b><span class="blue">public</span></b> <b><span class="blue">class</span></b> Sup {
@@ -98,9 +113,9 @@ setLatestSup();</span>
 </pre>
     </div>
 
-    <div class="sct sct-primary">
-    	<h3>Sup Schema</h3>
-        <p>Now we have to define a schema for our database. Create a new subfolder, com.uci.android101.sup.database, and create a class in this folder called <b><span class="code">SupDbSchema</span></b>. The contents of our schema class should be as follows:</p>
+    <div class="sct sct-secondary">
+        <h3>Sup Schema</h3>
+        <p>Now we have to define a schema for our database. <b>Create a new subfolder</b>, com.uci.android101.sup.database, and <b>create a class in this folder called <span class="code">SupDbSchema</span></b>. The contents of our schema class should be as follows:</p>
 <pre class="code-block">
 <span class="black"><b><span class="blue">public</span></b> <b><span class="blue">class</span></b> SupDbSchema {
 
@@ -119,10 +134,10 @@ setLatestSup();</span>
 </pre>
     </div>
 
-    <div class="sct sct-secondary">
-    	<h3>SQLiteOpenHelper</h3>
+    <div class="sct sct-primary">
+        <h3>SQLiteOpenHelper</h3>
 
-        <p>Android provides the <b><span class="code">SQLiteOpenHelper</span></b> class to handle database creation and maintenance. Create a class in our database package that subclasses <b><span class="code">SQLiteOpenHelper</span></b> called <b><span class="code">SupBaseHelper</span></b>.</p>
+        <p>Android provides the <b><span class="code">SQLiteOpenHelper</span></b> class to handle database creation and maintenance. <b>Create a class in our database package that subclasses <span class="code">SQLiteOpenHelper</span> called <span class="code">SupBaseHelper</span></b>.</p>
         
 <pre class="code-block">
 <span class="black"><b><span class="blue">public</span></b> <b><span class="blue">class</span></b> SupBaseHelper <b><span class="blue">extends</span></b> SQLiteOpenHelper {
@@ -151,10 +166,10 @@ setLatestSup();</span>
 </pre>
     </div>
 
-    <div class="sct sct-primary">
-    	<h3>SupDao</h3>
+    <div class="sct sct-secondary">
+        <h3>SupDao</h3>
 
-        <p>Lastly we need to create <b><span class="code">SupDao</span></b>, our data access object, in com.uci.android101.sup.</p>
+        <p>Lastly we need to <b>create <span class="code">SupDao</span></b>, our data access object, in com.uci.android101.sup.</p>
     
 <pre class="code-block">
 <span class="black"><b><span class="blue">public</span></b> <b><span class="blue">class</span></b> SupDao {
@@ -230,10 +245,18 @@ setLatestSup();</span>
 }</span>
 </pre>
 
-        <p>You may notice that you have errors for our new datetime classes. This is because we need to add another library dependency, like some may have done in <a href="/sup/step2.html">Step 2</a>. Add the following dependency and then resolve all of your imports.</p>
+        <p>You may notice that you have errors for our new datetime classes. This is because we need to <b>add another library dependency</b>, like some may have done in <a href="/sup/step2.html">Step 2</a>. Add the following dependency and then resolve all of your imports.</p>
 
         <img src="/assets/05_AddLibraryDependency.png" class="semi-full">
 
-        <p>Now, run your app and send some sups! Your last sup sent field should properly display the information of when and to whom the last sup was sent.</p>
+        <p><b>Now, run your app and send some sups!</b> Your last sup sent field should properly display the information of when and to whom the last sup was sent.</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="buttons">
+        <div class="previous">
+            <a href="/sup/step4-5.html" class="btn btn-secondary">&larr; Previous</a>
+        </div>
     </div>
 </div>
