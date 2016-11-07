@@ -48,17 +48,17 @@ isPage: true
 
         <p>We will <b>define <span class="code">REQUEST_CONTACT</span> as follows:</b></p>
 
-<pre class="code-block"><span class="black"><span class="blue">private static final int</span> <span class="purple"><b><em>REQUEST_CONTACT</em></b></span> = <span class="blue">0</span>;</span></pre>
+<pre class="code-block"><span class="black"><span class="blue"><b>private static final int</b></span> <span class="purple"><b><em>REQUEST_CONTACT</em></b></span> = <span class="blue">0</span>;</span></pre>
 
         <p>Calling <span class="code">startActivityForResult()</span> will give us an intent containing the URI to the selected contact. Thus, we will need to override <span class="code">onActivityResult()</span> in <span class="code">SupFragment.java</span>:</p>
 
 <pre class="code-block">
 <span class="black"><span class="yellow">@Override</span>
-<span class="blue">public void</span> onActivityResult(<span class="blue">int</span> requestCode, <span class="blue">int</span> resultCode, Intent data) {
-    <span class="blue">if</span> (resultCode != Activity.<span class="purple"><b><em>RESULT_OK</em></b></span>) {
+<span class="blue"><b>public void</b></span> onActivityResult(<span class="blue"><b>int</b></span> requestCode, <span class="blue"><b>int</b></span> resultCode, Intent data) {
+    <span class="blue"><b>if</b></span> (resultCode != Activity.<span class="purple"><b><em>RESULT_OK</em></b></span>) {
         <span class="blue"><b>return</b></span>;
     }
-    <span class="blue">if</span> (requestCode == <span class="purple"><b><em>REQUEST_CONTACT</em></b></span> &amp;&amp; data != <span class="blue"><b>null</b></span>) {
+    <span class="blue"><b>if</b></span> (requestCode == <span class="purple"><b><em>REQUEST_CONTACT</em></b></span> &amp;&amp; data != <span class="blue"><b>null</b></span>) {
         Uri contactUri = data.getData();
         populateName(contactUri);
     }

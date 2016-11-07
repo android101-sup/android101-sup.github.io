@@ -35,8 +35,8 @@ isPage: true
 
 <pre class="code-block">
 <span class="black"><span class="purple"><b>mSelectFriend</b></span>.setOnClickListener(<span class="blue"><b>new</b></span> View.OnClickListener() {
-    <b><span class="yellow">@Override</span></b>
-    <b><span class="blue">public void</span></b> onClick(View v) {
+    <span class="yellow">@Override</span>
+    <span class="blue">public void</span> onClick(View v) {
         startActivityForResult(<span class="purple">pickContact, <b><em>REQUEST_CONTACT</em></b></span>);
     }
 });</span>
@@ -48,17 +48,17 @@ isPage: true
 
         <p>We will <b>define <span class="code">REQUEST_CONTACT</span> as follows:</b></p>
 
-<pre class="code-block"><span class="black"><span class="blue">private static final int</span> <span class="purple"><b><em>REQUEST_CONTACT</em></b></span> = <span class="blue">0</span>;</span></pre>
+<pre class="code-block"><span class="black"><span class="blue"><b>private static final int</b></span> <span class="purple"><b><em>REQUEST_CONTACT</em></b></span> = <span class="blue">0</span>;</span></pre>
 
         <p>Calling <span class="code">startActivityForResult()</span> will give us an intent containing the URI to the selected contact. Thus, we will need to override <span class="code">onActivityResult()</span> in <span class="code">SupFragment.java</span>:</p>
 
 <pre class="code-block">
 <span class="black"><span class="yellow">@Override</span>
-<b><span class="blue">public void</span></b> onActivityResult(<b><span class="blue">int</span></b> requestCode, <b><span class="blue">int</span></b> resultCode, Intent data) {
-    <b><span class="blue">if</span></b> (resultCode != Activity.<span class="purple"><b><em>RESULT_OK</em></b></span>) {
+<span class="blue"><b>public void</b></span> onActivityResult(<span class="blue"><b>int</b></span> requestCode, <span class="blue"><b>int</b></span> resultCode, Intent data) {
+    <span class="blue"><b>if</b></span> (resultCode != Activity.<span class="purple"><b><em>RESULT_OK</em></b></span>) {
         <span class="blue"><b>return</b></span>;
     }
-    <b><span class="blue">if</span></b> (requestCode == <span class="purple"><b><em>REQUEST_CONTACT</em></b></span> &amp;&amp; data != <span class="blue"><b>null</b></span>) {
+    <span class="blue"><b>if</b></span> (requestCode == <span class="purple"><b><em>REQUEST_CONTACT</em></b></span> &amp;&amp; data != <span class="blue"><b>null</b></span>) {
         Uri contactUri = data.getData();
         populateName(contactUri);
     }
@@ -225,8 +225,8 @@ isPage: true
         <p><b>Add the missing constants at the top of <span class="code">SupFragment.java</span></b></p>
 
 <pre class="code-block">
-<span class="black"><span class="blue"><b>private static final</b></span> String <span class="purple"><b>SAVED_STATE_FRIEND_NAME</b></span> = <span class="green">"SAVED_STATE_FRIEND_NAME"</span>;
-<span class="blue"><b>private static final</b></span> String <span class="purple"><b>SAVED_STATE_FRIEND_PHONE_NUMBER</b></span> = <span class="green">"SAVED_STATE_FRIEND_PHONE_NUMBER"</span>;</span>
+<span class="black"><span class="blue"><b>private static final</b></span> String <span class="purple"><b>SAVED_STATE_FRIEND_NAME</b></span> = <span class="green"><b>SAVED_STATE_FRIEND_NAME"</b></span>;
+<span class="blue"><b>private static final</b></span> String <span class="purple"><b>SAVED_STATE_FRIEND_PHONE_NUMBER</b></span> = <span class="green"><b>SAVED_STATE_FRIEND_PHONE_NUMBER"</b></span>;</span>
 </pre>
 
         <p>Now we need to display the saved contact info. <b>Add the following to <span class="code">onCreateView()</span> after the null check on <span class="code">mFriend</span>:</b></p>
@@ -313,7 +313,7 @@ isPage: true
     Toast.makeText(getActivity().getApplicationContext(), R.string.<span class="purple"><b><em>noPhoneNumber</em></b></span>, Toast.<span class="purple"><b><em>LENGTH_SHORT</em></b></span>).show();
 
     Intent i = <span class="blue"><b>new</b></span> Intent(Intent.<span class="purple"><b><em>ACTION_SEND</em></b></span>);
-    i.setType(<span class="green">"text/plain"</span>);
+    i.setType(<span class="green"><b>text/plain"</b></span>);
     i.putExtra(Intent.<span class="purple"><b><em>EXTRA_TEXT</em></b></span>, getString(R.string.<span class="purple"><b><em>message</em></b></span>));
     startActivity(i);
 }</span>
