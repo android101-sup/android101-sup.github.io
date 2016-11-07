@@ -36,7 +36,7 @@ isPage: true
 <pre class="code-block">
 <span class="black"><span class="purple"><b>mSelectFriend</b></span>.setOnClickListener(<span class="blue"><b>new</b></span> View.OnClickListener() {
     <span class="yellow">@Override</span>
-    <span class="blue">public void</span> onClick(View v) {
+    <span class="blue"><b>public void</span></b> onClick(View v) {
         startActivityForResult(<span class="purple">pickContact, <b><em>REQUEST_CONTACT</em></b></span>);
     }
 });</span>
@@ -104,7 +104,7 @@ isPage: true
             String hasPhone = cursor.getString(hasPhoneColumnIndex);
             String id = cursor.getString(idColumnIndex);
 
-            populatePhoneNumber(hasPhone.equalsIgnoreCase(</span><b><span class="green">"1"</span></b><span class="black">), id);
+            populatePhoneNumber(hasPhone.equalsIgnoreCase(</span><span class="green">"1"</span><span class="black">), id);
         }
     } <span class="blue"><b>finally</b></span> {
         <b><span class="blue">if</span></b> (cursor != <span class="blue"><b>null</b></span>) {
@@ -169,11 +169,11 @@ isPage: true
     <b><span class="blue">if</span></b> (hasPhone) {
         Cursor phones = getActivity().getContentResolver()
         .query(ContactsContract.CommonDataKinds.Phone.<span class="purple"><b>CONTENT_URI</b></span>, <span class="blue"><b>null</b></span>,
-        ContactsContract.CommonDataKinds.Phone.<span class="purple"><b>CONTACT_ID</b></span> + <b><span class="greem">" = "</span></b> + id,
+        ContactsContract.CommonDataKinds.Phone.<span class="purple"><b>CONTACT_ID</b></span> + <span class="green">" = "</span> + id,
            <span class="blue"><b>null</b></span>, <span class="blue"><b>null</b></span>);
         <span class="blue"><b>try</b></span> {
             phones.moveToFirst();
-            phoneNumber = phones.getString(phones.getColumnIndex(<b><span class="green">"data1"</span></b>));
+            phoneNumber = phones.getString(phones.getColumnIndex(<span class="green">"data1"</span>));
         } <span class="blue"><b>finally</b></span> {
            <span class="blue"><b>if</b></span> (phones != <span class="blue"><b>null</b></span>) {
                 phones.close();
@@ -225,8 +225,8 @@ isPage: true
         <p><b>Add the missing constants at the top of <span class="code">SupFragment.java</span></b></p>
 
 <pre class="code-block">
-<span class="black"><span class="blue"><b>private static final</b></span> String <span class="purple"><b>SAVED_STATE_FRIEND_NAME</b></span> = <span class="green"><b>SAVED_STATE_FRIEND_NAME"</b></span>;
-<span class="blue"><b>private static final</b></span> String <span class="purple"><b>SAVED_STATE_FRIEND_PHONE_NUMBER</b></span> = <span class="green"><b>SAVED_STATE_FRIEND_PHONE_NUMBER"</b></span>;</span>
+<span class="black"><span class="blue"><b>private static final</b></span> String <span class="purple"><b>SAVED_STATE_FRIEND_NAME</b></span> = <span class="green">"SAVED_STATE_FRIEND_NAME"</span>;
+<span class="blue"><b>private static final</b></span> String <span class="purple"><b>SAVED_STATE_FRIEND_PHONE_NUMBER</b></span> = <span class="green">"SAVED_STATE_FRIEND_PHONE_NUMBER"</span>;</span>
 </pre>
 
         <p>Now we need to display the saved contact info. <b>Add the following to <span class="code">onCreateView()</span> after the null check on <span class="code">mFriend</span>:</b></p>
@@ -313,7 +313,7 @@ isPage: true
     Toast.makeText(getActivity().getApplicationContext(), R.string.<span class="purple"><b><em>noPhoneNumber</em></b></span>, Toast.<span class="purple"><b><em>LENGTH_SHORT</em></b></span>).show();
 
     Intent i = <span class="blue"><b>new</b></span> Intent(Intent.<span class="purple"><b><em>ACTION_SEND</em></b></span>);
-    i.setType(<span class="green"><b>text/plain"</b></span>);
+    i.setType(<span class="green">"text/plain"</span>);
     i.putExtra(Intent.<span class="purple"><b><em>EXTRA_TEXT</em></b></span>, getString(R.string.<span class="purple"><b><em>message</em></b></span>));
     startActivity(i);
 }</span>
