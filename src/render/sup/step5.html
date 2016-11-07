@@ -21,7 +21,7 @@ isPage: true
 
         <p>First, we have to configure our <b><span class="code">TextView</span></b> to properly display our last sup sent in the format we previously established in our <span class="code">strings.xml</span>.</p>
         
-        <p>Update our <span class="code">emptyLatestSup</span> string in <span class="code">res/values/strings.xml</span> and replace the todo with with "No sups sent recently."</p>
+        <p>Update our <span class="code">emptyLatestSup</span> string in <span class="code">res/values/strings.xml</span> and replace the todo with with <span class="code">No sups sent recently."</span></p>
 
         <p>Next, we will add an <b><span class="code">OnClickListener</span></b> to <span class="code">mLastSupSent</span>. Add the following fields to the top of our <span class="code">SupFragment.java</span></p>
         
@@ -51,7 +51,7 @@ String lastSupText = SupDao.get(getContext()).getLatestSup(mLastSupSentFormat, m
 setLatestSup();</span>
 </pre>
 
-<p>Now let's define these methods. Add these to <span class="code">SupFragment.java</span>.</p>
+        <p>Now let's define these methods. Add these to <span class="code">SupFragment.java</span>.</p>
 
 <pre class="code-block">
 <span class="black"><b><span class="blue">private</span></b> <b><span class="blue">void</span></b> saveSup() {
@@ -74,7 +74,7 @@ setLatestSup();</span>
     <div class="sct sct-primary">
         <h3>Sup</h3>
 
-        <p>Next we need to create a model object which will be saved into our database. Create a new class called <b><span class="code">Sup</span></b> in com.uci.android101.sup and use the following: </p>
+        <p>Next we need to create a model object which will be saved into our database. Create a new class called <b><span class="code">Sup</span></b> in <span class="code">com.uci.android101.sup</span> and use the following: </p>
 
 <pre class="code-block">
 <span class="black"><b><span class="blue">public</span></b> <b><span class="blue">class</span></b> Sup {
