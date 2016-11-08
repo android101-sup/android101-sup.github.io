@@ -11,19 +11,11 @@ isPage: true
     <div class="sct sct-primary">
         <h3>Intents</h3>
 
-        <p>An intent is an object that a component can use to communicate with the OS. We will use an intent to tell the <span class="code">ActivityManager</span> to start an activity for selecting a contact.</p>
-
-        <p class="learn-more"><a href="https://developer.android.com/reference/android/content/Intent.html">More about Intents &rarr;</a></p>
-
         <p><b>Add the following to <span class="code">SupFragment.java</span></b> after setting the button for <span class="code">mSelectFriend</span>:</p>
 
 <pre class="code-block">
 <span class="black"><span class="blue"><b>final</b></span> Intent pickContact = <span class="blue"><b>new</b></span> Intent(Intent.<span class="purple"><b><em>ACTION_PICK</em></b></span>, ContactsContract.Contacts.<span class="purple"><b><em>CONTENT_URI</em></b></span>);</span>
 </pre>
-
-        <p>The first argument is what kind of action we want - which is picking something. The second is a URI to the <span class="code">Contacts Provider</span>.</p>
-
-        <p class="learn-more"><a href="https://developer.android.com/guide/topics/providers/contacts-provider.html">More about Contacts Provider &rarr;</a></p>
     </div>
 
     <div class="sct sct-secondary">
@@ -41,10 +33,6 @@ isPage: true
     }
 });</span>
 </pre>
-
-        <p>This passes in an anonymous class implementing the <span class="code">View.OnClickListener</span> interface. It calls <span class="code">startActivityForResult</span> with our <span class="code">pickContact</span> intent because it expects a result from the activity.</p>
-
-        <p>You'll notice that we didn't define <span class="code">REQUEST_CONTACT</span> yet. This is a request code sent to the child activity and is received back by the parent. This is more useful for the parent to distinguish which type of child activity has reported back if it's started multiple activities. Even though we're starting only one child activity, this is a good practice to follow.</p>
 
         <p>We will <b>define <span class="code">REQUEST_CONTACT</span> as follows:</b></p>
 
@@ -207,12 +195,6 @@ isPage: true
 
         <p>In the app, try selecting a contact, then rotating your device or emulator. If you're on an emulator, look for the rotation icon.</p>
 
-        <p>You will notice that the name of the contact you selected disappears, and you end up going back to the original screen with the SelectFriend button.</p>
-
-        <p>This is because Android, by default, destroys and recreates the parent activity when the device is rotated. We will want to save data across rotation. To do this, we will store our data in a Bundle.</p>
-
-        <p class="learn-more"><a href="https://developer.android.com/reference/android/os/Bundle.html">More about Bundles &rarr;</a></p>
-
         <p>Let's go to <span class="code">SupFragment.java</span> and <b>override <span class="code">onSaveInstanceState()</span>. Add this after <span class="code">super.onSaveInstanceState()</span>:</b></p>
 
 <pre class="code-block">
@@ -295,14 +277,10 @@ isPage: true
     }
 }</span>
 </pre>
-
-        <p>We send an SMS message using <span class="code">SmsManager.sendTextMessage()</span> to the phone number stored. Then, we display a toast to notify the user that the text was sent by using <span class="code">R.string.sent</span> resource, or that there was an error, using <span class="code">R.string.sup_error</span>. In the <span class="code">finally</span> block, we <b>reset the text for SelectFriend.</b></p>
     </div>
 
     <div class="sct sct-secondary">
         <h3>An Alternative Flow</h3>
-
-        <p>Since both buttons display on the screen even if a user is not set, we need to respond to the user when they tap the send button. Responding to invalid states, such as this, is part of good user experience (UX) design.</p>
 
         <p>We have one more unimplemented function. <b>Add this to <span class="code">SupFragment.java</span>:</b></p>
 
@@ -320,8 +298,6 @@ isPage: true
 }</span>
 </pre>
 
-        <p>This method is called in the case just described. It displays a toast to notify the user that a phone number hasn't been selected, and allows the user to send "Sup" using another application that supports the SEND action.</p>
-
         <p>Finally, <b>add one more permission to <span class="code">AndroidManifest.xml</span>:</b></p>
 
 <pre class="code-block">
@@ -336,17 +312,8 @@ isPage: true
         <p><b>Press Play and send someone a Sup!</b></p>
 
         <p class="note">Note: If you're using an emulator, you won't be able to send an SMS to a real number. Instead, you can spin up a new emulator and send a text to that emulator. You'll find the last four digits in the toolbar at the top of the window. This will be the number to add as a contact. Add it to your first emulator as a contact and send a Sup to that contact.</p>
+
+        <img src="/assets/04_Emulator.png" alt="" class="phone">
     </div>
 
-</div>
-
-<div class="container">
-    <div class="buttons">
-        <div class="previous">
-            <a href="/sup/step3.html" class="btn btn-secondary">&larr; Previous</a>
-        </div>
-        <div class="next">
-            <a href="/sup/step4-5.html" class="btn btn-secondary">Next &rarr;</a>
-        </div>
-    </div>
 </div>
