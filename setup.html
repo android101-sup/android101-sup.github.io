@@ -1,0 +1,284 @@
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+    <title>Android 101  | Setup</title>
+
+    <!-- CSS and JS -->
+    <link  rel="stylesheet" href="/css/bootstrap.css" /><link  rel="stylesheet" href="/css/theme.css" /><link  rel="stylesheet" href="/css/stylesheet.css" />
+    <script defer="defer"  src="/js/jquery.js"></script><script defer="defer"  src="/js/bootstrap.js"></script><script defer="defer"  src="/js/scripts.js"></script>
+
+    <!-- Custom Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Playfair+Display" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="/">Android 101</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+
+            <!-- Autogenerate pages -->
+            <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                
+                    <li class="">
+                        <a href="/concepts.html">Concepts</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/resources.html">Resources</a>
+                    </li>
+                
+                    <li class="selected">
+                        <a href="/setup.html">Setup</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/code/01-hello-world.html">Step 1: Hello World</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/code/02-widgets-and-resources.html">Step 2: Widgets and Resources</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/code/03-activity-to-fragment.html">Step 3: Activity to Fragment</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/code/04-5-sdk-23-permissions.html">Step 4.5: SDK 23+ Permissions</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/code/04-implementation.html">Step 4: Implementation</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/code/05-database-integration.html">Step 5: Database Integration</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/sup/step1.html">Step 1: Hello World</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/sup/step2.html">Step 2: Widgets and Resources</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/sup/step3.html">Step 3: Activity to Fragment</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/sup/step4-5.html">Step 4.5: SDK 23+ Permissions</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/sup/step4.html">Step 4: Implementation</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/sup/step5.html">Step 5: Database Integration</a>
+                    </li>
+                
+                </ul>
+            </div> -->
+
+            <!-- The old boring way -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                <li class="selected">
+                  <a href="/setup.html">Setup</a>
+                </li>
+                <li class="dropdown ">
+                  <a id="dLabel" data-target="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    Sup
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="dLabel">
+                    <li>
+                      <a href="/sup/step1.html">Step 1: Hello World</a>
+                    </li>
+                    <li>
+                      <a href="/sup/step2.html">Step 2: Widgets and Resources</a>
+                    </li>
+                    <li>
+                      <a href="/sup/step3.html">Step 3: Activity to Fragment</a>
+                    </li>
+                    <li>
+                      <a href="/sup/step4.html">Step 4: Implementation</a>
+                    </li>
+                    <li>
+                      <a href="/sup/step4-5.html">Step 4.5: SDK 23+ Permissions</a>
+                    </li>
+                    <li>
+                      <a href="/sup/step5.html">Step 5: Database Integration</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="">
+                  <a href="/concepts.html">Concepts</a>
+                </li>
+                <li class="">
+                  <a href="/resources.html">Resources</a>
+                </li>
+              </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+
+    <div class="container">
+    <h2>Setup</h2>
+
+    <div class="tab-container">
+        <ul class="tabs">
+            <li class="tab current" data-tab="tab-1">OS X</li>
+            <li class="tab" data-tab="tab-2">Windows</li>
+            <li class="tab" data-tab="tab-3">Debian/Ubuntu</li>
+            <li class="tab" data-tab="tab-4">Fedora</li>
+        </ul>
+    </div>
+
+
+
+	<!-- INSTALL ANDROID STUDIO -->
+    <div class="sct sct-primary no-bottom">
+    	<h3>Install Android Studio</h3>
+
+    	<p>Follow <a href="https://developer.android.com/studio/install.html">these instructions</a> from the official Android documentation.</p>
+    </div>
+
+
+
+	<!-- GIT -->
+    <div class="sct sct-primary no-bottom">
+    	<h3>Git</h3>
+
+    	<p>Git is a widely used version control system. That means when you developing a new feature or fixing a bug, git is the program in charge of managing your app at those states in development. It also makes life saner when multiple people are working on the same app and trying not to step on each others' toes.</p>
+
+        <p>One of the most popular Git repository hosting services is GitHub. Many developers use it to host their personal projects or personal websites. (This site is hosted on GitHub!) In your future you will most likely find yourself using it over and over again. If you don't already have a GitHub account, head over to <a href="https://github.com/">GitHub</a> to create one. Why not? It's free.</p>
+
+    	<p>For the purposes of this project, we will use git's command line interface (CLI).</p>
+
+        <p class="learn-more"><a href="https://git-scm.com/docs">Git CheatSheet &rarr;</a></p>
+    </div>
+
+    <!-- OSX -->
+    <div class="tab-content tab-1 no-top current">
+        <p>For Mac, you have a few options for installing the git CLI depending on what you have on your computer prior. You only need to pick one of the following.</p>
+        <ul>
+        	<li><span class="recommended">Recommended</span> Install with Homebrew.</li>
+        	<ol>
+        		<li>If you have not already, follow the instructions to <b><a href="http://brew.sh/">install Homebrew</a></b>.</li>
+        		<li><b>Open your terminal</b> and install Git using Homebrew by typing in the following command:<br>
+					<pre style="margin-top:10px;">brew install git</pre>
+        		</li>
+        	</ol>
+        	<li>Install using the <a href="https://sourceforge.net/projects/git-osx-installer/files/">Mac Installer</a>.</li>
+        	<ol>
+        		<li>Open up the <b>Mac Installer</b> and follow the prompts.</li>
+        		<li>If you would like to login to your git account, you'll need to install the <b><a href="https://www.atlassian.com/git/tutorials/install-git/mac-os-x#install-the-git-credential-osx">git-credential-osxkeychain</a></b> to save your username and password in the OSX keychain.</li>
+        	</ol>
+        </ul>
+    </div>
+
+	<!-- WINDOWS -->
+    <div class="tab-content tab-2 no-top">
+    	<p>For Windows, you have two options for installing git shell to access the CLI. You only need to pick one of the following.</p>
+        <ul>
+            <li><span class="recommended">Recommended</span> Install the <a href="https://desktop.github.com/">Desktop Client</a> from GitHub. This option provides a GUI to git and github. It also installs the git shell.</li>
+            <ol>
+            	<li>Open up the <b>Desktop Client</b> and follow the prompts.</li>
+            	<li>Click the <b>gear icon</b> in the top right corner.</li>
+            	<li>Select <b>Open in Git Shell</b>.</li>
+            </ol>
+            <li>Install <a href="https://git-for-windows.github.io/">git shell</a> without the desktop client.</li>
+            <ol>
+            	<li>Open up <b>git shell</b> as a regular program.</li>
+            	<li>If the Windows PowerShell opens up, then <b>type <span class="code">$git</span></b> to output the usage documentation.</li>
+            </ol>
+        </ul>
+    </div>
+
+	<!-- DEBIAN/UBUNTU -->
+    <div class="tab-content tab-3 no-top" style="padding:0 30px 15px 30px">
+        To install, <b>open up your terminal</b> and install by using apt-get:
+<pre style="margin-top:10px;">
+sudo apt-get update
+sudo apt-get install git
+</pre>
+    </div>
+
+	<!-- FEDORA -->
+    <div class="tab-content tab-4 no-top" style="padding:0 30px 15px 30px">
+        To install, <b>open up your terminal</b> and install by using yum:
+        <pre style="margin-top:10px;">sudo yum install git</pre>
+    </div>
+
+	<!-- GENERAL INSTRUCTIONS AGAIN -->
+    <div class="sct sct-primary no-top no-bottom">
+    	<p>Once you've got git installed, verify that you have the right version. Type the following into your terminal.</p>
+
+<pre>
+git --version
+</pre>
+
+		<p>Make sure the result you get is at least <span class="code">git version 2.0</span>.</p>
+
+    	<p>Finally, you'll need to configure your Git username and email. These will be associated with any future commits. While we won't be committing anything during this project, it is a necessary step to use git. Use the following commands, inserting your own name and email.</p>
+
+<pre>
+git config --global user.name "YOUR NAME HERE"
+git config --global user.email "YOUR EMAIL HERE"
+</pre>
+    </div>
+
+
+
+	<!-- EMULATOR -->
+    <div class="sct sct-primary">
+    	<h3>Setup Emulator</h3>
+
+        <ol>
+        	<li>Navigate to <b>Tools > Android > AVD Manager</b>.</li>
+        	<li>Select <b>Create Virtual Device</b>.</li>
+        	<li><b>Choose a device</b>. For this activity, we'll be using a <b>Nexus 5</b> device.</li>
+            <li><b>Choose a system image.</b> For this activity, we'll be using <b>Marshmallow</b> with <b>ABI x86_64</b> (or just ABI x86 if you're on a 32-bit machine).
+            	<br>If your system image is not yet downloaded, you must <b>download</b> first.
+            	<br>For more information about Android versions, <a href="https://www.android.com/history/#/marshmallow">check out the documentation here.</a></li>
+            <li><b>Click finish</b>.</li>
+            <li><b>Press play</b> on the device you just created. Give it a few seconds to start up.</li>
+        </ol>
+    </div>
+</div>
+
+    <!-- Bottom padding -->
+    
+        <div class="container"></div>
+    
+
+</body>
+
+</html>

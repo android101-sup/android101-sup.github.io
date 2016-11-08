@@ -1,0 +1,335 @@
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+    <title>Android 101  | Step 3: Activity to Fragment</title>
+
+    <!-- CSS and JS -->
+    <link  rel="stylesheet" href="/css/bootstrap.css" /><link  rel="stylesheet" href="/css/theme.css" /><link  rel="stylesheet" href="/css/stylesheet.css" />
+    <script defer="defer"  src="/js/jquery.js"></script><script defer="defer"  src="/js/bootstrap.js"></script><script defer="defer"  src="/js/scripts.js"></script>
+
+    <!-- Custom Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Playfair+Display" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="/">Android 101</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+
+            <!-- Autogenerate pages -->
+            <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                
+                    <li class="">
+                        <a href="/concepts.html">Concepts</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/resources.html">Resources</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/setup.html">Setup</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/code/01-hello-world.html">Step 1: Hello World</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/code/02-widgets-and-resources.html">Step 2: Widgets and Resources</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/code/03-activity-to-fragment.html">Step 3: Activity to Fragment</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/code/04-5-sdk-23-permissions.html">Step 4.5: SDK 23+ Permissions</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/code/04-implementation.html">Step 4: Implementation</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/code/05-database-integration.html">Step 5: Database Integration</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/sup/step1.html">Step 1: Hello World</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/sup/step2.html">Step 2: Widgets and Resources</a>
+                    </li>
+                
+                    <li class="selected">
+                        <a href="/sup/step3.html">Step 3: Activity to Fragment</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/sup/step4-5.html">Step 4.5: SDK 23+ Permissions</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/sup/step4.html">Step 4: Implementation</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/sup/step5.html">Step 5: Database Integration</a>
+                    </li>
+                
+                </ul>
+            </div> -->
+
+            <!-- The old boring way -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="/setup.html">Setup</a>
+                </li>
+                <li class="dropdown selected">
+                  <a id="dLabel" data-target="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    Sup
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="dLabel">
+                    <li>
+                      <a href="/sup/step1.html">Step 1: Hello World</a>
+                    </li>
+                    <li>
+                      <a href="/sup/step2.html">Step 2: Widgets and Resources</a>
+                    </li>
+                    <li>
+                      <a href="/sup/step3.html">Step 3: Activity to Fragment</a>
+                    </li>
+                    <li>
+                      <a href="/sup/step4.html">Step 4: Implementation</a>
+                    </li>
+                    <li>
+                      <a href="/sup/step4-5.html">Step 4.5: SDK 23+ Permissions</a>
+                    </li>
+                    <li>
+                      <a href="/sup/step5.html">Step 5: Database Integration</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="">
+                  <a href="/concepts.html">Concepts</a>
+                </li>
+                <li class="">
+                  <a href="/resources.html">Resources</a>
+                </li>
+              </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+
+    <div class="container">
+    <h2>Step 3: Activity to Fragment</h2>
+	
+    <div class="sct sct-primary">
+    	<h3>Inflating Widgets</h3>
+
+    	<p>In this step, we'll look at how the widgets from Step 2 were inflated and put on the screen. Then, we'll refactor our SupActivity to use UIFragments.</p>
+
+    	<p>Open up <span class="code">java/com/uci/android101/sup/SupActivity.java</span> and look at the <span class="code">onCreate()</span> method. This is called when we create an activity. You'll see that this function calls <span class="code">setContentView()</span>, and passes in the <span class="code">R.layout.activity_sup</span>. <span class="code">R.layout.activity_sup</span> is the resource ID for <span class="code">res/layout/activity_sup.xml</span> we were working on earlier.</p>
+    </div>
+
+	<div class="sct sct-secondary">
+		<h3>Activity to Fragment</h3>
+
+		<p>Why do we refactor? Apps commonly need their UI to be flexible, and using UI Fragments allows just that. A Fragment is a modular piece of an activity, with its own UI, behavior, and lifecycle. You can put multiple fragments in an activity.</p>
+
+        <p class="learn-more"><a href="https://developer.android.com/guide/components/fragments.html">More about Fragments &rarr;</a></p>
+
+        <p>There are 5 steps we need to do in order for an activity to use a UI Fragment.</p>
+    </div>
+
+    <div class="sct sct-primary">
+		<h3>Create a Fragment</h3>
+		<p>First, we want to <b>create a UI by defining widgets in a layout file for the fragment</b>.</p>
+
+		<p>Go to <b><span class="code">app/res/layout</span></b> in the Project pane in the left. Then <b>right click and select New > Layout resource file</b>. Name this new layout resource file <b><span class="code">fragment_sup</span></b> and leave everything else as is. Then <b>copy everything you have in <span class="code">activity_sup.xml</span> into <span class="code">fragment_sup.xml</span></b>.</p>
+	</div>
+
+	<div class="sct sct-secondary">
+		<h3>Setup the Fragment</h3>
+		<p>Next, we need to create a spot in SupActivity's view hierarchy for the fragment.</p>
+
+		<p>Open up <b><span class="code">res/layouts/activity_sup.xml</span></b> and replace everything with the following:</p>
+
+<pre class="code-block">
+<span class="black">&lt;?<span class="blue">xml version=</span><span class="green">"1.0"</span> <span class="blue">encoding=</span><span class="green">"utf-8"</span>?&gt;
+&lt;FrameLayout</span>
+	<span class="blue">xmlns:</span><span class="purple">android</span>="http://schemas.android.com/apk/res/android"
+	<span class="purple">android</span>:<span class="blue">layout_width=</span>"match_parent"
+	<span class="purple">android</span>:<span class="blue">layout_height=</span>"match_parent"
+	<span class="purple">android</span>:<span class="blue">orientation=</span>"vertical"
+	<span class="purple">android</span>:<span class="blue">id=</span>"@+id/fragment_container"<span class="black">&gt;
+&lt;/FrameLayout&gt;</span>
+</pre>
+
+		<p>The <span class="code">FrameLayout</span> is a generic container view that can be used to host fragments.</p>
+
+        <p class="learn-more"><a href="https://developer.android.com/reference/android/widget/FrameLayout.html">More about Frame Layouts &rarr;</a></p>
+	</div>
+
+	<div class="sct sct-primary">
+		<h3>Setup the Activity</h3>
+
+		<p>Now we create the <span class="code">SupFragment</span> class and set its view, much like what the activity did in its <span class="code">onCreate()</span> method.</p>
+
+		<p>Go to <b><span class="code">/java/com/uci/android101/sup</span></b> directory in the Project pane and <b>right click and select New > Java Class</b>.</p>
+
+		<p>Name the class <b><span class="code">SupFragment</span></b> and specify <b><span class="code">android.support.v4.app.Fragment</span></b> as its superclass. If it's not there, you'll need to add the library dependency.</p>
+	</div>
+
+	<div class="sct sct-secondary">
+		<h3>Adding a Library Dependency</h3>
+
+		<p>Go to <b>File > Project Structure</b>, then select <b>app</b> under <b>Modules</b> on the left pane. Then select the <b>Dependencies tab</b> and <b>click +</b> at the bottom and choose the <b>Library dependency</b>.</p>
+
+		<img src="/assets/03_AddLibraryDependency.png" class="semi-full">
+
+		<p>Highlight the <b>com.android.support:support-v4:25.0.0</b> library and <b>select OK</b>.</p>
+
+		<img src="/assets/03_AddSupportLibrary.png" class="semi-full">
+
+		<p>The purpose of <span class="code">SupFragment</span> is to let the user select a contact and send "Sup" to that contact. We'll implement that later.</p>
+
+		<p>We then set <span class="code">SupFragment</span>'s view by overriding <span class="code">onCreateView(...)</span>. Autocomplete should help you with that. In this function, add the following:</p>
+
+<pre class="code-block">
+<span class="black">View v = inflater.inflate(R.layout.<span class="purple"><b><em>fragment_sup</em></b></span>, container, <b><span class="blue">false</span></b>);
+<b><span class="blue">return</span></b> v;</span>
+</pre>
+
+		<p class="note">Note: Make sure to include the libraries that are necessary. Generally, Android Studio's autocomplete will allow you to do this. You can also use <span class="code">alt+enter</span> to enter.</p>
+
+		<p>Here, we see the <span class="code">LayoutInflater inflater</span>, that inflates the fragment's view. The first parameter is the view's resource ID. The second parameter is the view's parent, which is needed to configure the widgets. The boolean at the end tells the inflater if we want to add the inflated view to the view's parent. We stated false here because we will add the view in the activity later.</p>
+	</div>
+
+	<div class="sct sct-primary">
+		<h3>Inflating the Widgets</h3>
+
+		<p>We will now inflate the widgets from <span class="code">fragment_sup.xml</span>. <b>Add these fields to <span class="code">SupFragment.java</span></b>:</p>
+
+<pre class="code-block">
+<span class="black"><span class="blue"><b>private</b></span> Button <span class="purple"><b>mSelectFriend</b></span>;
+<span class="blue"><b>private</b></span> Button <span class="purple"><b>mSendButton</b></span>;
+<span class="blue"><b>private</b></span> TextView <span class="purple"><b>mLastSupSent</b></span>;
+</span></pre>
+
+		<p><b>Click on the <span class="code">Button</span> text</b> so that Android Studio underlines it. <b>Press <span class="code">alt+enter</span></b> to <b>import the <span class="cocde">Button</span> class</b>. Do the same for the <b><span class="code">TextView</span></b> class.</p>
+
+		<p>For each widget, we will call <span class="code">View.findViewById()</span> to inflate it. <b>Add the following to <span class="code">onCreateView()</span></b> after <span class="code">inflater.inflate()</span>:</p>
+
+<pre class="code-block">
+<span class="black"><span class="purple"><b>mSelectFriend</b></span> = (Button) v.findViewById(<span class="purple"><b><em>R.id.select_friend)</em></b></span>;
+<span class="purple"><b>mSendButton</b></span> = (Button) v.findViewById(<span class="purple"><b><em>R.id.send_sup)</em></b></span>;
+<span class="purple"><b>mLastSupSent</b></span> = (TextView) v.findViewById(<span class="purple"><b><em>R.id.last_sup_sent)</em></b></span>;
+</span></pre>
+
+		<p>At this point, your code should look like the following:</p>
+
+		<img src="/assets/03_SupFragment.png" alt="">
+	</div>
+
+	<div class="sct sct-secondary">
+		<h3>Manage the Activity Lifecycle</h3>
+
+		<p>Now, we'll use an activity to manage <span class="code">SupFragment</span>'s lifecycle.</p>
+
+		<p>We don't need to add anything specific to <span class="code">SupActivity</span> in order to add a fragment to the activity. Therefore, we will create an abstract subclass of Activity that adds a fragment to itself, then subclass it in <span class="code">SupActivity</span>.</p>
+
+		<p>Go to the <b><span class="code">/java/com/uci/android101/sup/</span></b> directory in the Project pane. <b>Right click this</b> and select <b>New > Java Class</b>.</p>
+
+		<p><b>Name the class <span class="code">SingleFragmentActivity</span></b>. <b>Choose <span class="code">android.support.v7.app.AppCompatActivity</span></b> as the superclass, and in <span class="code">Modifiers</span>, <b>select <span class="code">Abstract</span></b>.</p>
+
+		<p>Now, in <span class="code">SingleFragmentActivity.java</span>, add the following:</p>
+
+<pre class="code-block">
+<span class="black"><span class="yellow">@Override</span>
+<span class="blue"><b>public void</b></span> onCreate(Bundle savedInstanceState) {
+<span class="blue"><b>super</b></span>.onCreate(savedInstanceState);
+	setContentView(R.layout.<span class="purple"><b><em>activity_fragment</em></b></span>);
+    FragmentManager fm = getSupportFragmentManager();
+    Fragment fragment = fm.findFragmentById(R.id.<span class="purple"><b><em>fragment_container</em></b></span>);
+    <span class="blue"><b>if</b></span> (fragment == <span class="blue"><b>null</b></span>) {
+        fragment = createFragment();
+        fm.beginTransaction().add(R.id.<span class="purple"><b><em>fragment_container</em></b></span>, fragment).commit();
+    }
+}</span>
+</pre>
+
+		<p>Make sure your code looks like this:</p>
+
+		<img src="/assets/03_SingleFragmentActivity.png">
+	
+		<p>Again, you'll need to import the necessary classes using <span class="code">alt+enter</span>, as we did before. If you notice, we still have an error - the resource ID referenced in <span class="code">setContentView()</span>. We're actually just going to rename <span class="code">activity_sup.xml</span> to <span class="code">activity_fragment.xml</span> because it just contains a container for one fragment. To rename, <b>right click <span class="code">activity_sup.xml</span></b> in the left pane, then select <b>Refactor > Rename</b>, and rename it to <b><span class="code">activity_fragment.xml</span></b>.</p>
+	</div>
+
+	<div class="sct sct-primary">
+		<h3>Extend from the Superclass</h3>
+
+		<p>Now <b>return to <span class="code">SupActivity.java</span></b> and <b>change the superclass to <span class="code">SingleFragmentActivity</span></b>. Also, <b>change <span class="code">onCreate()</span> to <span class="code">public</span></b> and implement the missing method by <b>hovering over the method name</b> and hit <b><span class="code">alt+enter > Implement methods</span></b>. This will bring up a dialog, and here, <b>select <span class="code">createFragment():Fragment</span></b> and <b>click OK</b>.</p>
+
+		<p>Now, ensure <span class="code">SupActivity.java</span> looks as below:</p>
+
+		<img src="/assets/03_SupActivity.png">
+	</div>
+
+	<div class="sct sct-secondary">
+		<h3>Run Your App</h3>
+
+		<p>Press the <b>green play button</b>. Your app should look like this:</p>
+
+		<img src="/assets/03_ActivityToFragment.png" alt="" class="phone">
+	</div>
+
+</div>
+
+<div class="container">
+    <div class="buttons">
+        <div class="previous">
+            <a href="/sup/step2.html" class="btn btn-secondary">&larr; Previous</a>
+        </div>
+        <div class="next">
+            <a href="/sup/step4.html" class="btn btn-secondary">Next &rarr;</a>
+        </div>
+    </div>
+</div>
+
+    <!-- Bottom padding -->
+    
+        <div class="container"></div>
+    
+
+</body>
+
+</html>

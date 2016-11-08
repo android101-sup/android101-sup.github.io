@@ -1,0 +1,507 @@
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+    <title>Android 101  | Step 4: Implementation</title>
+
+    <!-- CSS and JS -->
+    <link  rel="stylesheet" href="/css/bootstrap.css" /><link  rel="stylesheet" href="/css/theme.css" /><link  rel="stylesheet" href="/css/stylesheet.css" />
+    <script defer="defer"  src="/js/jquery.js"></script><script defer="defer"  src="/js/bootstrap.js"></script><script defer="defer"  src="/js/scripts.js"></script>
+
+    <!-- Custom Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Playfair+Display" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="/">Android 101</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+
+            <!-- Autogenerate pages -->
+            <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                
+                    <li class="">
+                        <a href="/concepts.html">Concepts</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/resources.html">Resources</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/setup.html">Setup</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/code/01-hello-world.html">Step 1: Hello World</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/code/02-widgets-and-resources.html">Step 2: Widgets and Resources</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/code/03-activity-to-fragment.html">Step 3: Activity to Fragment</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/code/04-5-sdk-23-permissions.html">Step 4.5: SDK 23+ Permissions</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/code/04-implementation.html">Step 4: Implementation</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/code/05-database-integration.html">Step 5: Database Integration</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/sup/step1.html">Step 1: Hello World</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/sup/step2.html">Step 2: Widgets and Resources</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/sup/step3.html">Step 3: Activity to Fragment</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/sup/step4-5.html">Step 4.5: SDK 23+ Permissions</a>
+                    </li>
+                
+                    <li class="selected">
+                        <a href="/sup/step4.html">Step 4: Implementation</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/sup/step5.html">Step 5: Database Integration</a>
+                    </li>
+                
+                </ul>
+            </div> -->
+
+            <!-- The old boring way -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="/setup.html">Setup</a>
+                </li>
+                <li class="dropdown selected">
+                  <a id="dLabel" data-target="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    Sup
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="dLabel">
+                    <li>
+                      <a href="/sup/step1.html">Step 1: Hello World</a>
+                    </li>
+                    <li>
+                      <a href="/sup/step2.html">Step 2: Widgets and Resources</a>
+                    </li>
+                    <li>
+                      <a href="/sup/step3.html">Step 3: Activity to Fragment</a>
+                    </li>
+                    <li>
+                      <a href="/sup/step4.html">Step 4: Implementation</a>
+                    </li>
+                    <li>
+                      <a href="/sup/step4-5.html">Step 4.5: SDK 23+ Permissions</a>
+                    </li>
+                    <li>
+                      <a href="/sup/step5.html">Step 5: Database Integration</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="">
+                  <a href="/concepts.html">Concepts</a>
+                </li>
+                <li class="">
+                  <a href="/resources.html">Resources</a>
+                </li>
+              </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+
+    <div class="container">
+    <h2>Step 4: Implementation</h2>
+    
+    <div class="sct sct-primary">
+        <h3>Intents</h3>
+
+        <p>An intent is an object that a component can use to communicate with the OS. We will use an intent to tell the <span class="code">ActivityManager</span> to start an activity for selecting a contact.</p>
+
+        <p class="learn-more"><a href="https://developer.android.com/reference/android/content/Intent.html">More about Intents &rarr;</a></p>
+
+        <p><b>Add the following to <span class="code">SupFragment.java</span></b> after setting the button for <span class="code">mSelectFriend</span>:</p>
+
+<pre class="code-block">
+<span class="black"><span class="blue"><b>final</b></span> Intent pickContact = <span class="blue"><b>new</b></span> Intent(Intent.<span class="purple"><b><em>ACTION_PICK</em></b></span>, ContactsContract.Contacts.<span class="purple"><b><em>CONTENT_URI</em></b></span>);</span>
+</pre>
+
+        <p>The first argument is what kind of action we want - which is picking something. The second is a URI to the <span class="code">Contacts Provider</span>.</p>
+
+        <p class="learn-more"><a href="https://developer.android.com/guide/topics/providers/contacts-provider.html">More about Contacts Provider &rarr;</a></p>
+    </div>
+
+    <div class="sct sct-secondary">
+        <h3>Listeners</h3>
+
+        <p>Now we will add a listener to the button to launch the intent. A listener is an object that responds to an event. In this case, our event is when the user presses the button.</p>
+
+        <p><b>Add this line below the intent you just created:</b></p>
+
+<pre class="code-block">
+<span class="black"><span class="purple"><b>mSelectFriend</b></span>.setOnClickListener(<span class="blue"><b>new</b></span> View.OnClickListener() {
+    <span class="yellow">@Override</span>
+    <span class="blue"><b>public void</span></b> onClick(View v) {
+        startActivityForResult(<span class="purple">pickContact, <b><em>REQUEST_CONTACT</em></b></span>);
+    }
+});</span>
+</pre>
+
+        <p>This passes in an anonymous class implementing the <span class="code">View.OnClickListener</span> interface. It calls <span class="code">startActivityForResult</span> with our <span class="code">pickContact</span> intent because it expects a result from the activity.</p>
+
+        <p>You'll notice that we didn't define <span class="code">REQUEST_CONTACT</span> yet. This is a request code sent to the child activity and is received back by the parent. This is more useful for the parent to distinguish which type of child activity has reported back if it's started multiple activities. Even though we're starting only one child activity, this is a good practice to follow.</p>
+
+        <p>We will <b>define <span class="code">REQUEST_CONTACT</span> as follows:</b></p>
+
+<pre class="code-block"><span class="black"><span class="blue"><b>private static final int</b></span> <span class="purple"><b><em>REQUEST_CONTACT</em></b></span> = <span class="blue">0</span>;</span></pre>
+
+        <p>Calling <span class="code">startActivityForResult()</span> will give us an intent containing the URI to the selected contact. Thus, we will need to override <span class="code">onActivityResult()</span> in <span class="code">SupFragment.java</span>:</p>
+
+<pre class="code-block">
+<span class="black"><span class="yellow">@Override</span>
+<span class="blue"><b>public void</b></span> onActivityResult(<span class="blue"><b>int</b></span> requestCode, <span class="blue"><b>int</b></span> resultCode, Intent data) {
+    <span class="blue"><b>if</b></span> (resultCode != Activity.<span class="purple"><b><em>RESULT_OK</em></b></span>) {
+        <span class="blue"><b>return</b></span>;
+    }
+    <span class="blue"><b>if</b></span> (requestCode == <span class="purple"><b><em>REQUEST_CONTACT</em></b></span> &amp;&amp; data != <span class="blue"><b>null</b></span>) {
+        Uri contactUri = data.getData();
+        populateName(contactUri);
+    }
+}</span>
+</pre>
+    </div>
+
+    <div class="sct sct-primary">
+        <h3>Populating the Name</h3>
+
+        <p>We now need to implement <span class="code">populateName()</span>, which will get the name of the contact chosen. We will query the contacts database using the URI we got back. The implementation below follows how to use the Android SQLite Library.</p>
+
+        <p><b>Add this to <span class="code">SupFragment</span>:</b></p>
+
+<pre class="code-block">
+<span class="black"><span class="grey"><em>/**
+ * Retrieves the contact name and phone number from Address Book
+ * <b><u>@param</u> contactUri</b>
+ */</em></span>
+<span class="blue"><b>private void</b></span> populateName(Uri contactUri){
+    String[] queryFields = <span class="blue"><b>new</b></span> String[] {
+        ContactsContract.Contacts.<span class="purple"><b>DISPLAY_NAME</b></span>,
+        ContactsContract.Contacts.<span class="purple"><b>HAS_PHONE_NUMBER</b></span>,
+        ContactsContract.Contacts.<span class="purple"><b>_ID</b></span>
+    };
+
+    Cursor cursor = getActivity().getContentResolver()
+            .query(contactUri, queryFields, <span class="blue"><b>null</b></span>, <span class="blue"><b>null</b></span>, <span class="blue"><b>null</b></span>);
+    <span class="blue"><b>try</b></span> {
+        <span class="blue"><b>if</b></span> (cursor.getCount() == <span class="blue">0</span>) {
+            <span class="blue"><b>return</b></span>;
+        }
+        cursor.moveToFirst();
+        <span class="blue"><b>int</b></span> nameColumnIndex = cursor.getColumnIndex(ContactsContract.Contacts.<span class="purple"><b>DISPLAY_NAME</b></span>);
+        String name = cursor.getString(nameColumnIndex);
+
+        <span class="purple"><b>mFriend</b></span>.setFriendName(name);
+        <span class="purple"><b>mSelectFriend</b></span>.setText(name);
+
+        <span class="blue"><b>if</b></span> (name != <span class="blue"><b>null</b></span>) {
+            <span class="blue"><b>int</b></span> hasPhoneColumnIndex = cursor.getColumnIndex(ContactsContract.Contacts.<span class="purple"><b>HAS_PHONE_NUMBER</b></span>);
+            <span class="blue"><b>int</b></span> idColumnIndex = cursor.getColumnIndex(ContactsContract.Contacts.<span class="purple"><b>_ID</b></span>);
+            String hasPhone = cursor.getString(hasPhoneColumnIndex);
+            String id = cursor.getString(idColumnIndex);
+
+            populatePhoneNumber(hasPhone.equalsIgnoreCase(</span><span class="green">"1"</span><span class="black">), id);
+        }
+    } <span class="blue"><b>finally</b></span> {
+        <b><span class="blue">if</span></b> (cursor != <span class="blue"><b>null</b></span>) {
+            cursor.close();
+        }
+    }
+}</span>
+</pre>
+
+    </div>
+
+    <div class="sct sct-secondary">
+        <h3>Create a POJO</h3>
+
+        <p>Now we need to create a private field to store the information we get back. As you can guess based on the error Android Studio is giving you now, we will need to create a class for <span class="code">mFriend</span>. Let's call this the <span class="code">Friend</span> class. First, add this to <span class="code">SupFragment</span>:</p>
+
+<pre class="code-block"><span class="black"><span class="blue"><b>private</b></span> Friend <span class="purple"><b>mFriend</b></span>;</span></pre>
+
+        <p>Next, <b>create a java class named <span class="code">Friend</span></b> in <span class="code">com.uci.android101.sup</span>. (You should know how to create new classes by now :) )</p>
+
+        <p>This is your standard POJO (Plain Old Java Object); add this to the class:</p>
+
+<pre class="code-block">
+<span class="black"><span class="blue"><b>private</b></span> String <span class="purple"><b>mFriendName</b></span>;
+<span class="blue"><b>private</b></span> String <span class="purple"><b>mPhoneNumber</b></span>;
+
+<span class="blue"><b>public</b></span> String getPhoneNumber() {
+    <span class="blue"><b>return</b></span> <span class="purple"><b>mPhoneNumber</b></span>;
+}
+
+<span class="blue"><b>public void</b></span> setPhoneNumber(String phoneNumber) {
+    <span class="blue"><b>this</b></span>.<span class="purple"><b>mPhoneNumber</b></span> = phoneNumber;
+}
+
+<span class="blue"><b>public</b></span> String getFriendName() {
+    <span class="blue"><b>return</b></span> <span class="purple"><b>mFriendName</b></span>;
+}
+
+<span class="blue"><b>public void</b></span> setFriendName(String friendName) {
+    <span class="blue"><b>this</b></span>.<span class="purple"><b>mFriendName</b></span> = friendName;
+}</span>
+</pre>
+
+        <p>Now let's go back to <span class="code">SupFragment.java</span>. <b>Put this line at the beginning of <span class="code">onCreateView</span></b> so that we prevent getting a NullPointerException:</p>
+
+<pre class="code-block">
+<span class="black"><span class="blue"><b>if</b></span> (<span class="purple"><b>mFriend</b></span> == <span class="blue"><b>null</b></span>) {
+    <span class="purple"><b>mFriend</b></span> = <span class="blue"><b>new</b></span> Friend();
+}
+</span></pre>
+
+        <p>We'll also create the <span class="code">populatePhoneNumber()</span> function that <span class="code">populateName</span> calls. <b>Add this to <span class="code">SupFragment</span>:</b></p>
+
+<pre class="code-block">
+<span class="black"><span class="grey"><em>/**
+ * Retrieves the phone number from Address Book
+ * <b><u>@param</u> hasPhone</b> true if phone number is found, false otherwise
+ * <b><u>@param</u> id</b> id of the contact
+ */</em></span>
+<span class="blue"><b>private void</b></span> populatePhoneNumber(<span class="blue"><b>boolean</b></span> hasPhone, String id){
+    String phoneNumber = <span class="blue"><b>null</b></span>;
+    <b><span class="blue">if</span></b> (hasPhone) {
+        Cursor phones = getActivity().getContentResolver()
+        .query(ContactsContract.CommonDataKinds.Phone.<span class="purple"><b>CONTENT_URI</b></span>, <span class="blue"><b>null</b></span>,
+        ContactsContract.CommonDataKinds.Phone.<span class="purple"><b>CONTACT_ID</b></span> + <span class="green">" = "</span> + id,
+           <span class="blue"><b>null</b></span>, <span class="blue"><b>null</b></span>);
+        <span class="blue"><b>try</b></span> {
+            phones.moveToFirst();
+            phoneNumber = phones.getString(phones.getColumnIndex(<span class="green">"data1"</span>));
+        } <span class="blue"><b>finally</b></span> {
+           <span class="blue"><b>if</b></span> (phones != <span class="blue"><b>null</b></span>) {
+                phones.close();
+           }
+        }
+    }
+    <span class="purple"><b>mFriend</b></span>.setPhoneNumber(phoneNumber);
+}</span>
+</pre>
+    </div>
+
+    <div class="sct sct-primary">
+        <h3>Permissions</h3>
+
+        <p>We need to request permissions from the Android OS in order to be able to get the contacts info. Permissions is a security mechanism - that way, apps don't have arbitrary access to your data. We need to add a permission to read <span class="code">ContactsContract.Contacts._ID</span> from the contacts database to get the phone number in the <span class="code">CommonDataKinds.Phone</span> table. <b>Add the following tag in <span class="code">/manifests/AndroidManifest.xml</span>:</b></p>
+
+<pre class="code-block">
+<span class="black">&lt;uses-permission <span class="purple">android</span>:<span class="blue">name</span>=<span class="green">"android.permission.READ_CONTACTS"</span> /&gt;</span>
+</pre>
+        <p>This is what your <span class="code">AndroidManifest.xml</span> should look like now:</p>
+
+        <img src="/assets/04_AndroidManifest.png">
+
+        <p class="learn-more"><a href="https://developer.android.com/guide/topics/security/permissions.html">More about Permissions &rarr;</a></p>
+
+        <p>Now <b>press Play to run your app.</b> You should now be able to press the SelectFriend button, choose a contact, and see the text on the SelectFriend change to your contact's name.</p>
+    </div>
+
+    <div class="sct sct-secondary">
+        <h3>Rotation Bug</h3>
+
+        <p>In the app, try selecting a contact, then rotating your device or emulator. If you're on an emulator, look for the rotation icon.</p>
+
+        <p>You will notice that the name of the contact you selected disappears, and you end up going back to the original screen with the SelectFriend button.</p>
+
+        <p>This is because Android, by default, destroys and recreates the parent activity when the device is rotated. We will want to save data across rotation. To do this, we will store our data in a Bundle.</p>
+
+        <p class="learn-more"><a href="https://developer.android.com/reference/android/os/Bundle.html">More about Bundles &rarr;</a></p>
+
+        <p>Let's go to <span class="code">SupFragment.java</span> and <b>override <span class="code">onSaveInstanceState()</span>. Add this after <span class="code">super.onSaveInstanceState()</span>:</b></p>
+
+<pre class="code-block">
+<span class="black"><span class="blue"><b>if</b></span> (mFriend != <span class="blue"><b>null</b></span>) {
+    outState.putString(<span class="purple"><b>SAVED_STATE_FRIEND_NAME</b></span>, <span class="purple"><b>mFriend</b></span>.getFriendName());
+    outState.putString(<span class="purple"><b>SAVED_STATE_FRIEND_PHONE_NUMBER</b></span>, <span class="purple"><b>mFriend</b></span>.getPhoneNumber());
+}</span>
+</pre>
+
+        <p><b>Add the missing constants at the top of <span class="code">SupFragment.java</span></b></p>
+
+<pre class="code-block">
+<span class="black"><span class="blue"><b>private static final</b></span> String <span class="purple"><b>SAVED_STATE_FRIEND_NAME</b></span> = <span class="green">"SAVED_STATE_FRIEND_NAME"</span>;
+<span class="blue"><b>private static final</b></span> String <span class="purple"><b>SAVED_STATE_FRIEND_PHONE_NUMBER</b></span> = <span class="green">"SAVED_STATE_FRIEND_PHONE_NUMBER"</span>;</span>
+</pre>
+
+        <p>Now we need to display the saved contact info. <b>Add the following to <span class="code">onCreateView()</span> after the null check on <span class="code">mFriend</span>:</b></p>
+
+<pre class="code-block">
+<span class="black">String savedContactName = <span class="blue"><b>null</b></span>;
+<span class="blue"><b>if</b></span> (savedInstanceState != <span class="blue"><b>null</b></span>){
+    savedContactName = savedInstanceState.getString(<span class="purple"><b>SAVED_STATE_FRIEND_NAME</b></span>);
+    String number = savedInstanceState.getString(<span class="purple"><b>SAVED_STATE_FRIEND_PHONE_NUMBER</b></span>);
+
+    <span class="purple"><b>mFriend</b></span>.setFriendName(savedContactName);
+    <span class="purple"><b>mFriend</b></span>.setPhoneNumber(number);
+}</span>
+</pre>
+
+        <p>Then we set the text on the SelectFriend button if <span class="code">savedContactName</span> has been set. <b>Add the following after we get a reference to the SelectFriend button:</b></p>
+
+<pre class="code-block">
+<span class="black"><span class="blue"><b>if</b></span> (savedContactName != <span class="blue"><b>null</b></span>) {
+    <span class="purple"><b>mSelectFriend</b></span>.setText(savedContactName);
+}</span>
+</pre>
+
+        <p><b>Press Play again</b> and now you can verify that your selected contact's name is added back to the Select Friend button even if you rotate your screen.</p>
+    </div>
+
+    <div class="sct sct-primary">
+        <h3>Send Button</h3>
+
+        <p>Now that we have a contact's name and phone number, we can send an SMS once the user presses the SendButton. <b>Add this at the end of <span class="code">onCreateView() </span>after we get a reference to SendButton:</b></p>
+
+<pre class="code-block">
+<span class="black"><span class="purple"><b>mSendButton</b></span>.setOnClickListener(<span class="blue"><b>new</b></span> View.OnClickListener() {
+    <span class="yellow">@Override</span>
+    <span class="blue"><b>public void</b></span> onClick(View v) {
+        <span class="blue"><b>if</b></span> (<span class="purple"><b>mFriend</b></span>.getPhoneNumber() != <span class="blue"><b>null</b></span>) {
+            sendSup();
+        } <span class="blue"><b>else</b></span> {
+            sendCustomizedSupWithoutPhoneNumber();
+        }
+    }
+});</span>
+</pre>
+
+        <p>Now we want to just <b>implement <span class="code">sendSup()</span></b>.</p>
+
+<pre class="code-block">
+<span class="black"><span class="grey"><em>/**
+ * Method responsible for sending sup message
+ */</em></span>
+<span class="blue"><b>private void</b></span> sendSup() {
+    SmsManager smsManager;
+    <span class="blue"><b>try</b></span> {
+        smsManager = SmsManager.getDefault();
+        smsManager.sendTextMessage(<span class="purple"><b>mFriend</b></span>.getPhoneNumber(), <span class="blue"><b>null</b></span>, getString(R.string.<span class="purple"><b><em>message</em></b></span>), <span class="blue"><b>null</b></span>, <span class="blue"><b>null</b></span>);
+        Toast.makeText(getActivity().getApplicationContext(), getString(R.string.<span class="purple"><b><em>sent</em></b></span>),
+                Toast.<span class="purple"><b><em>LENGTH_LONG</em></b></span>).show();
+    } <span class="blue"><b>catch</b></span> (Exception e) {
+        Toast.makeText(getActivity().getApplicationContext(),
+                getString(R.string.<span class="purple"><b><em>sup_error</em></b></span>),
+                Toast.<span class="purple"><b><em>LENGTH_LONG</em></b></span>).show();
+        e.printStackTrace();
+    } <span class="blue"><b>finally</b></span> {
+        <span class="purple"><b>mSelectFriend</b></span>.setText(getString(R.string.<span class="purple"><b><em>select_friend</em></b></span>));
+        <b><span class="purple">mFriend</span></b> = <b><span class="blue">new</span></b> Friend();
+    }
+}</span>
+</pre>
+
+        <p>We send an SMS message using <span class="code">SmsManager.sendTextMessage()</span> to the phone number stored. Then, we display a toast to notify the user that the text was sent by using <span class="code">R.string.sent</span> resource, or that there was an error, using <span class="code">R.string.sup_error</span>. In the <span class="code">finally</span> block, we <b>reset the text for SelectFriend.</b></p>
+    </div>
+
+    <div class="sct sct-secondary">
+        <h3>An Alternative Flow</h3>
+
+        <p>Since both buttons display on the screen even if a user is not set, we need to respond to the user when they tap the send button. Responding to invalid states, such as this, is part of good user experience (UX) design.</p>
+
+        <p>We have one more unimplemented function. <b>Add this to <span class="code">SupFragment.java</span>:</b></p>
+
+<pre class="code-block">
+<span class="black"><span class="grey"><em>/**
+ * Method responsible for sending howdy message without phone number
+ */</em></span>
+<span class="blue"><b>private void</b></span> sendCustomizedSupWithoutPhoneNumber(){
+    Toast.makeText(getActivity().getApplicationContext(), R.string.<span class="purple"><b><em>noPhoneNumber</em></b></span>, Toast.<span class="purple"><b><em>LENGTH_SHORT</em></b></span>).show();
+
+    Intent i = <span class="blue"><b>new</b></span> Intent(Intent.<span class="purple"><b><em>ACTION_SEND</em></b></span>);
+    i.setType(<span class="green">"text/plain"</span>);
+    i.putExtra(Intent.<span class="purple"><b><em>EXTRA_TEXT</em></b></span>, getString(R.string.<span class="purple"><b><em>message</em></b></span>));
+    startActivity(i);
+}</span>
+</pre>
+
+        <p>This method is called in the case just described. It displays a toast to notify the user that a phone number hasn't been selected, and allows the user to send "Sup" using another application that supports the SEND action.</p>
+
+        <p>Finally, <b>add one more permission to <span class="code">AndroidManifest.xml</span>:</b></p>
+
+<pre class="code-block">
+<span class="black">&lt;uses-permission <span class="purple">android</span>:<span class="blue">name</span>=<span class="green">"android.permission.SEND_SMS"</span> /&gt;</span>
+</pre>
+
+    </div>
+
+    <div class="sct sct-primary">
+        <h3>Run Your App</h3>
+
+        <p><b>Press Play and send someone a Sup!</b></p>
+
+        <p class="note">Note: If you're using an emulator, you won't be able to send an SMS to a real number. Instead, you can spin up a new emulator and send a text to that emulator. You'll find the last four digits in the toolbar at the top of the window. This will be the number to add as a contact. Add it to your first emulator as a contact and send a Sup to that contact.</p>
+
+        <img src="/assets/04_Emulator.png" alt="" class="phone">
+    </div>
+
+</div>
+
+<div class="container">
+    <div class="buttons">
+        <div class="previous">
+            <a href="/sup/step3.html" class="btn btn-secondary">&larr; Previous</a>
+        </div>
+        <div class="next">
+            <a href="/sup/step4-5.html" class="btn btn-secondary">Next &rarr;</a>
+        </div>
+    </div>
+</div>
+
+    <!-- Bottom padding -->
+    
+        <div class="container"></div>
+    
+
+</body>
+
+</html>

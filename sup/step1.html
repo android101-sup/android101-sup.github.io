@@ -1,0 +1,256 @@
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+    <title>Android 101  | Step 1: Hello World</title>
+
+    <!-- CSS and JS -->
+    <link  rel="stylesheet" href="/css/bootstrap.css" /><link  rel="stylesheet" href="/css/theme.css" /><link  rel="stylesheet" href="/css/stylesheet.css" />
+    <script defer="defer"  src="/js/jquery.js"></script><script defer="defer"  src="/js/bootstrap.js"></script><script defer="defer"  src="/js/scripts.js"></script>
+
+    <!-- Custom Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Playfair+Display" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="/">Android 101</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+
+            <!-- Autogenerate pages -->
+            <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                
+                    <li class="">
+                        <a href="/concepts.html">Concepts</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/resources.html">Resources</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/setup.html">Setup</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/code/01-hello-world.html">Step 1: Hello World</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/code/02-widgets-and-resources.html">Step 2: Widgets and Resources</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/code/03-activity-to-fragment.html">Step 3: Activity to Fragment</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/code/04-5-sdk-23-permissions.html">Step 4.5: SDK 23+ Permissions</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/code/04-implementation.html">Step 4: Implementation</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/code/05-database-integration.html">Step 5: Database Integration</a>
+                    </li>
+                
+                    <li class="selected">
+                        <a href="/sup/step1.html">Step 1: Hello World</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/sup/step2.html">Step 2: Widgets and Resources</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/sup/step3.html">Step 3: Activity to Fragment</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/sup/step4-5.html">Step 4.5: SDK 23+ Permissions</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/sup/step4.html">Step 4: Implementation</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/sup/step5.html">Step 5: Database Integration</a>
+                    </li>
+                
+                </ul>
+            </div> -->
+
+            <!-- The old boring way -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="/setup.html">Setup</a>
+                </li>
+                <li class="dropdown selected">
+                  <a id="dLabel" data-target="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    Sup
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="dLabel">
+                    <li>
+                      <a href="/sup/step1.html">Step 1: Hello World</a>
+                    </li>
+                    <li>
+                      <a href="/sup/step2.html">Step 2: Widgets and Resources</a>
+                    </li>
+                    <li>
+                      <a href="/sup/step3.html">Step 3: Activity to Fragment</a>
+                    </li>
+                    <li>
+                      <a href="/sup/step4.html">Step 4: Implementation</a>
+                    </li>
+                    <li>
+                      <a href="/sup/step4-5.html">Step 4.5: SDK 23+ Permissions</a>
+                    </li>
+                    <li>
+                      <a href="/sup/step5.html">Step 5: Database Integration</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="">
+                  <a href="/concepts.html">Concepts</a>
+                </li>
+                <li class="">
+                  <a href="/resources.html">Resources</a>
+                </li>
+              </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+
+    <div class="container">
+    <h2>Step 1: Hello World</h2>
+
+    <div class="sct sct-primary">
+        <h3>Start Up Android Studio</h3>
+
+        <ol>
+            <li>Open up <b>Android Studio</b> and select <b>Start a new Android Studio project</b>.</li>
+            <li><b>Choose your application name.</b> Let's call ours <b>Sup</b>. In general, keep these in mind for application names:</li>
+            <ul>
+                <li>Don't use hyphens or special characters.</li>
+                <li>Don't use Java reserved keywords.</li>
+                <li>Don't use package names beginning with digits.</li>
+            </ul>
+            <li><b>Choose a company domain.</b> Let's use <b>android101.uci.com</b>. In general, make sure to follow the same rules as above.</li>
+            <li>You can change the project location if you'd like, but we're going to leave it as is.</li>
+            <li>On the next page, <b>select Phone and Tablet</b>. Choose <b>minimum SDK as API 16: Android 4.1 (Jelly Bean)</b>. This indicates the lowest API that this app is guaranteed to work in.</li>
+            <li><b>Click next</b>, and then Android Studio will begin installing the SDK components.</li>
+            <li>On the template page, <b>select Empty Activity</b>.</li>
+            <li>Change the Activity Name to <b>SupActivity</b>.</li>
+            <li><b>Click finish</b>.</li>
+        </ol>
+    </div>
+
+    <div class="sct sct-secondary">
+        <h3>Android Studio</h3>
+
+        <p>In Android Studio, we have your Project File tree on the left, and your code workspace on the right. At the top, we have a toolbar, and highlighted in the screenshot below are the ones we'll be interacting with the most.</p>
+
+        <img src="/assets/01_AndroidStudioTools.png" style="width:100%;">
+        
+        <ul>
+            <li>The <b>green play button</b> is used to run whatever task you have specified in the dropdown menu to the left of it.</li>
+            <li>By default, the <b>dropdown menu</b> is set to the application you're building now.</li>
+            <li>To the right of the play button, we have a <b>green bug</b> that is used to <b>debug and step through</b> your code.</li>
+        </ul>
+    </div>
+
+    <div class="sct sct-primary">
+        <h3>Activity</h3>
+
+        <p>Open up <span class="code">/java/com/uci/android101/SupActivity.java</span>.</p>
+        <p>Android apps are made up activities, which are actions that users can take. They're responsible for managing an application's visual interaction with its users. This is the basic unit of the Android app. Generally, we want to use just one activity per page.</p>
+
+        <p class="learn-more"><a href="https://developer.android.com/reference/android/app/Activity.html">Learn More &rarr;</a></p>
+    </div>
+
+    <div class="sct sct-secondary">
+        <h3>Layout</h3>
+
+        <p>Open up <span class="code">/res/layout/activity_sup.xml</span>.</p>
+        <p>By default, this will show the Design view. At the bottom of the main window, you can switch between Design and Text. For our purposes, <b>select Text</b>. If the Preview tab is open, you can see this tab is useful for previewing your layouts. However, it does burn a lot of memory, so to reduce that, you can collapse this tab.</p>
+        <p>This is a resource file that allows us to define a set of UI objects (or widgets) and their positioning. The default layout contains two components: <span class="code">RelativeLayout</span> and <span class="code">TextView</span>. We'll be seeing shortly what these look like.</p>
+        <p>For widgets, keep in mind that they all require <span class="code">android:layout_width</span> and <span class="code">android:layout_height</span>. For layout. Layout widgets require <span class="code">android:orientation</span>. These are fairly self explanatory, but we'll explain these widgets' properties a little later on.</p>
+
+        <p class="learn-more"><a href="https://developer.android.com/guide/topics/ui/declaring-layout.html">Learn More &rarr;</a></p>
+    </div>
+
+    <div class="sct sct-primary">
+        <h3>Android Manifest</h3>
+
+        <p>Open up <span class="code">/manifests/AndroidManifest.xml</span>.</p>
+        <p>Each Android app must have one <span class="code">AndroidManifest.xml</span> named exactly that. It defines your package information and all of the components that are required to make this app, including activities, services, broadcast receivers, content providers, etc. It also manages securities and permissions.</p>
+        <p>In your <span class="code">AndroidManifext.xml</span>, you can see that <span class="code">SupActivity</span> is defined for you by default. It includes a couple of <span class="code">intent-filters</span> to tell your app that you would like to open this activity when it starts up.</p>
+
+        <p class="learn-more"><a href="https://developer.android.com/guide/topics/manifest/manifest-intro.html">Learn More &rarr;</a></p>
+    </div>
+
+    <div class="sct sct-secondary">
+        <h3>Run Your App</h3>
+
+        <ol>
+            <li>Click the <b>green arrow</b> in your toolbar.</li>
+            <li>Select the <b>virtual device</b> you created earlier.</li>
+            <li>If an pop up shows up asking about an Instant Run, you can just <b>Proceed without Instant Run</b>.</li>
+            <li>Your emulator should start up and show your app running.</li>
+        </ol>
+
+        <p class="note">Note: if you are using your own device, you may need to <b>enable USB debugging</b> in your Developer Tools.</p>
+
+        <p>Your app should look like this:</p>
+
+        <img src="/assets/01_HelloWorld.png" class="phone">
+    </div>
+</div>
+
+<div class="container">
+    <div class="buttons">
+        <div class="previous">
+            <a href="/setup.html" class="btn btn-secondary">&larr; Previous</a>
+        </div>
+        <div class="next">
+            <a href="/sup/step2.html" class="btn btn-secondary">Next &rarr;</a>
+        </div>
+    </div>
+</div>
+
+    <!-- Bottom padding -->
+    
+        <div class="container"></div>
+    
+
+</body>
+
+</html>

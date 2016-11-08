@@ -1,0 +1,268 @@
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+    <title>Android 101  | Concepts</title>
+
+    <!-- CSS and JS -->
+    <link  rel="stylesheet" href="/css/bootstrap.css" /><link  rel="stylesheet" href="/css/theme.css" /><link  rel="stylesheet" href="/css/stylesheet.css" />
+    <script defer="defer"  src="/js/jquery.js"></script><script defer="defer"  src="/js/bootstrap.js"></script><script defer="defer"  src="/js/scripts.js"></script>
+
+    <!-- Custom Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Playfair+Display" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="/">Android 101</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+
+            <!-- Autogenerate pages -->
+            <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                
+                    <li class="selected">
+                        <a href="/concepts.html">Concepts</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/resources.html">Resources</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/setup.html">Setup</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/code/01-hello-world.html">Step 1: Hello World</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/code/02-widgets-and-resources.html">Step 2: Widgets and Resources</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/code/03-activity-to-fragment.html">Step 3: Activity to Fragment</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/code/04-5-sdk-23-permissions.html">Step 4.5: SDK 23+ Permissions</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/code/04-implementation.html">Step 4: Implementation</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/code/05-database-integration.html">Step 5: Database Integration</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/sup/step1.html">Step 1: Hello World</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/sup/step2.html">Step 2: Widgets and Resources</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/sup/step3.html">Step 3: Activity to Fragment</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/sup/step4-5.html">Step 4.5: SDK 23+ Permissions</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/sup/step4.html">Step 4: Implementation</a>
+                    </li>
+                
+                    <li class="">
+                        <a href="/sup/step5.html">Step 5: Database Integration</a>
+                    </li>
+                
+                </ul>
+            </div> -->
+
+            <!-- The old boring way -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="/setup.html">Setup</a>
+                </li>
+                <li class="dropdown ">
+                  <a id="dLabel" data-target="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    Sup
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="dLabel">
+                    <li>
+                      <a href="/sup/step1.html">Step 1: Hello World</a>
+                    </li>
+                    <li>
+                      <a href="/sup/step2.html">Step 2: Widgets and Resources</a>
+                    </li>
+                    <li>
+                      <a href="/sup/step3.html">Step 3: Activity to Fragment</a>
+                    </li>
+                    <li>
+                      <a href="/sup/step4.html">Step 4: Implementation</a>
+                    </li>
+                    <li>
+                      <a href="/sup/step4-5.html">Step 4.5: SDK 23+ Permissions</a>
+                    </li>
+                    <li>
+                      <a href="/sup/step5.html">Step 5: Database Integration</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="selected">
+                  <a href="/concepts.html">Concepts</a>
+                </li>
+                <li class="">
+                  <a href="/resources.html">Resources</a>
+                </li>
+              </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+
+    <div class="container scrollspy-container" data-spy="scroll" data-offset="50">
+	<div class="col-md-9">
+		<div class="sct sct-primary" id="activity-lifecycle">
+			<h3>Activity LifeCycle</h3>
+			<p>An activity is a single entity that has the focus of the user and can be interacted by the user. Activities have 4 states: Active, Running, Paused, and Stopped.</p>
+
+			<ul>
+				<li>If an activity is in the foreground of the screen (at the top of the activity stack), it is <b>active</b>, or <b>running</b>.</li>
+				<li>If an activity does not have focus but is still visible on the foreground, it is <b>paused</b>.</li>
+				<li>If an activity is not visible or in the background, it is <b>stopped</b>.</li>
+				<li>If an activity is <b>paused</b> or <b>stopped</b>, the system can drop the activity or kill the process to reallocate memory.</li>
+			</ul>
+
+			<img src="https://developer.android.com/images/activity_lifecycle.png" alt="">
+
+			<ul>
+				<li><span class="code">onCreate()</span> is first called when creating an activity. This is commonly where all of the initial setup will be.</li>
+				<li><span class="code">onStart()</span> is when the activity is visible to the user.</li>
+				<li><span class="code">onResume()</span> is when the activity is interacted by the user.</li>
+				<li><span class="code">onPause()</span> is when the user chooses to return to a previous activity.</li>
+				<li><span class="code">onStop()</span> is when the activity is no longer visible to the user.</li>
+				<li><span class="code">onDestroy()</span> is called when the activity is finished and ready to be destroyed to release resources to be reallocated.</li>
+			</ul>
+
+	        <p class="learn-more"><a href="https://developer.android.com/training/basics/activity-lifecycle/index.html">Learn More &rarr;</a></p>
+		</div>
+
+		<div class="sct sct-secondary" id="intents">
+			<h3>Intents</h3>
+
+			<p>An intent is like a message that holds a set of instructions. They are often used to launch and link activities. Primarily, intents contain action and data. Actions are those that need to be executed, and data is usually the data that the actions operate on. Intents can additionally contain category, type, component, and extras.</p>
+
+			<p>There are two kinds of intents:</p>
+
+			<ul>
+				<li><b>Explicit intents</b> have a specified class that will handle the intent and run the instructions.</li>
+				<li><b>Implicit intents</b> will be delegated based on the information it contains to which ever available component is best to run for the intent. These require more setup, such as specifying an intent filter in the <span class="code">AndroidManifest.xml</span>.</li>
+			</ul>
+
+	        <p class="learn-more"><a href="https://developer.android.com/reference/android/content/Intent.html">Learn More &rarr;</a></p>
+		</div>
+
+		<div class="sct sct-primary" id="permissions">
+			<h3>Permissions</h3>
+			<p>As a user, prior to Marshmallow (SDK 22-), you are prompted to give permissions on installation. For OS versions that are Marshmallow or newer (SDK 23+), permissions will be requested when it is needed based on the activity.</p>
+
+			<p>As a developer, permissions are not set by default. In order to use protected features of the device, you must include the associated permissions using <span class="code">&lt;uses-permission&gt;</span> tags.</p>
+
+	        <p class="learn-more"><a href="https://developer.android.com/guide/topics/security/permissions.html#permissions">Learn More &rarr;</a></p>
+		</div>
+
+		<div class="sct sct-secondary" id="best-practices">
+			<h3>Best Practices</h3>
+			<h4>Readability vs creating objects</h4>
+ 
+			<p>In Android, allocating objects is not free.  (memory allocation adds up and eventually causes the OS to have to deallocate objects which means everything pauses for some length of time in the order of 10 - 50 millisec.)  Of course, that does not mean to go so far towards reducing object allocation that the code becomes readable.  However I think the way this is now is plenty readable, so if I were making the call I would avoid the extra objects.</p>
+
+			<h4>Using Getters and Setters</h4>
+
+			<p>In our app, we created a POJO (plain old Java object) with just getters and setters. This is a best practice that we observe because it will be useful in more complicated projects, as well as in unit testing. As of now, we have something simple like:</p>
+
+<pre class="code-block">
+<span class="black"><span class="blue"><b>public</b></span> String getPhoneNumber() {
+    <span class="blue"><b>return</b></span> <span class="purple"><b>mPhoneNumber</b></span>;
+}
+
+<span class="blue"><b>public void</b></span> setPhoneNumber(String phoneNumber) {
+    <span class="blue"><b>this</b></span>.<span class="purple"><b>mPhoneNumber</b></span> = phoneNumber;
+}</span>
+</pre>
+
+			<p>In the future, there may be more complicated logic involved in a getter or setter.</p>
+
+			<h4>Debugging</h4>
+
+			<p>To improve the quality of your app, use the logger to log messages to verify that your app is working as you expected. In the future, this allows other developers to understand what's going on in your code for better readability.</p>
+
+			<p>Additionally, when you're debugging your own code, you can use an IDE (such as IntelliJ or Eclipse) or even Google Chrome (depending on what you're making) to debug through your project. You can step through you code and find out where things are breaking.</p>
+
+			<h4>UI Threads</h4>
+
+			<p>The UIThread is the main thread of execution for your application. This is where most of your application code is run. All of your application components (Activities, Services, ContentProviders, BroadcastReceivers) are created in this thread, and any system calls to those components are performed in this thread.</p>
+
+			<ul>
+				<li>Do all UI work (visuals) on UI threads: for example, creating views, buttons, etc.</li>
+				<li>Do all other work on background thread or else the program can hang and crash.</li>
+			</ul>
+
+			<h4>Unit Tests</h4>
+
+			<p>Unit tests are pieces of code you write that test small modular pieces (units) of your code to ensure they are working properly. They are vital to code maintenance during the development process. It is also often a good idea to write your code in a way to make them unit testable.</p>
+		</div>
+	</div>
+
+
+
+	<!-- SIDEBAR -->
+	<div class="col-md-3">
+		<div class="sidenav scrollspy-nav">
+			<ul class="nav">
+				<li><a href="#activity-lifecycle">Activity Lifecycle</a></li>
+				<li><a href="#intents">Intents</a></li>
+				<li><a href="#permissions">Permissions</a></li>
+				<li><a href="#best-practices">Best Practices</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+    <!-- Bottom padding -->
+    
+        <div class="container"></div>
+    
+
+</body>
+
+</html>
