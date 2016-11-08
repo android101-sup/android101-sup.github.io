@@ -42,7 +42,7 @@ isPage: true
         <span class="purple">android</span><span class="blue">:text=</span><span class="red">"@string/send_sup"</span>
         <span class="purple">android</span><span class="blue">:layout_marginTop=</span>"10dp"<span class="black">/&gt;</span>
 
-    <span class="black">&lt;Button</span>
+    <span class="black">&lt;TextView</span>
         <span class="purple">android</span><span class="blue">:layout_width=</span>"match_parent"
         <span class="purple">android</span><span class="blue">:layout_height=</span>"wrap_content"
         <span class="purple">android</span><span class="blue">:id=</span>"@+id/last_sup_sent"
@@ -82,7 +82,7 @@ isPage: true
 
         <p class="learn-more"><a href="https://developer.android.com/reference/android/widget/LinearLayout.html">More about LinearLayouts &rarr;</a></p>
 
-        <p>You'll notice that the three <span class="code">Button</span> widgets have <span class="code">android:id</span> properties. This is for identification when referencing this widget in code.</p>
+        <p>You'll notice that the two <span class="code">Button</span> widgets and one <span class="code">TextView</span> widget have <span class="code">android:id</span> properties. This is for identification when referencing this widget in code.</p>
 
         <p>Additionally, all of the <span class="code">Button</span> widgets also have <span class="code">android:text</span> properties. This is to specify what the button will be labeled with.</p>
 
@@ -143,7 +143,7 @@ isPage: true
 <span class="black">&lt;string</span> <span class="blue">name=</span>"noPhoneNumber"<span class="black">&gt;Please add a phone number!&lt;/string&gt;</span>
 <span class="black">&lt;string</span> <span class="blue">name=</span>"message"<span class="black">&gt;Sup&lt;/string&gt;</span>
 <span class="black">&lt;string</span> <span class="blue">name=</span>"sent"<span class="black">&gt;Sent!&lt;/string&gt;</span>
-<span class="black">&lt;string</span> <span class="blue">name=</span>"error"<span class="black">&gt;Sending failed. Please try again later!&lt;/string&gt;</span>
+<span class="black">&lt;string</span> <span class="blue">name=</span>"sup_error"<span class="black">&gt;Sending failed. Please try again later!&lt;/string&gt;</span>
 </pre>
 
         <p>The reason why we use a <span class="code">strings.xml</span> is for localization purposes. This means that if you want to release your app in multiple languages, you can easily adjust change the strings in your app.</p>
